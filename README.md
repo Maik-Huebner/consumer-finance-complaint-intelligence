@@ -4,7 +4,7 @@
 
 Das Projekt zeigt einen vollständigen analytischen Workflow für Financial Services: von Datenaufnahme und Datenbereinigung über Taxonomie-Harmonisierung und Quality Gates bis zu Zeitreihen-, Korrelations- und Sensitivitätsanalyse sowie Management-Reporting.
 
-> **Modul 1 - Datenanalyse mit Python / EDA**  
+> **Modul 1 - Datenanalyse mit Python / EDA**
 > Fokus: belastbare Datenanalyse und Entscheidungsunterstützung - bewusst ohne künstlich ergänztes Machine Learning.
 
 ## Executive Snapshot
@@ -259,7 +259,7 @@ Damit zeigt das Projekt nicht nur Python-Kenntnisse, sondern einen vollständige
 
 ## Autor
 
-**Maik Hübner**  
+**Maik Hübner**
 AI Engineering · Data Analysis · Machine Learning · Financial Services
 
 ---
