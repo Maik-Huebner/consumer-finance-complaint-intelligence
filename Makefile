@@ -7,6 +7,7 @@
 	test-strict \
 	lint \
 	quality \
+	all \
 	reproduce \
 	clean
 
@@ -32,6 +33,8 @@ lint:
 	ruff check .
 
 quality: lint test-strict
+
+all: quality
 
 reproduce: pipeline
 
