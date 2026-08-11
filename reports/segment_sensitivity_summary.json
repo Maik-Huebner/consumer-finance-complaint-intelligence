@@ -1,0 +1,64 @@
+{
+  "focus_product": "Credit reporting or other personal consumer reports",
+  "first_year": 2022,
+  "last_year": 2025,
+  "focus_share_first_year": 0.7531343526045149,
+  "focus_share_last_year": 0.8837634257870279,
+  "focus_share_change_percentage_points": 13.062907318251305,
+  "total_complaints_first_year": 800245,
+  "total_complaints_last_year": 5442977,
+  "without_focus_complaints_first_year": 197553,
+  "without_focus_complaints_last_year": 632673,
+  "total_growth_first_to_last": 5.801638248286462,
+  "without_focus_growth_first_to_last": 2.202548176944921,
+  "total_monthly_slope": 10510.973838471557,
+  "without_focus_monthly_slope": 925.0661636995222,
+  "focus_monthly_slope": 9585.907674772034,
+  "focus_share_of_total_linear_slope": 0.9119904418072416,
+  "total_trend_r2": 0.877072847346441,
+  "without_focus_trend_r2": 0.5831200856990527,
+  "correlations": {
+    "complaints_vs_timely_response_rate": {
+      "all": {
+        "pearson_r": 0.3428343177711727,
+        "pearson_p": 0.01706031429302432,
+        "spearman_rho": 0.5194311767260096,
+        "spearman_p": 0.00015484174317258444
+      },
+      "without_focus_product": {
+        "pearson_r": -0.2966178918329985,
+        "pearson_p": 0.04064001776895314,
+        "spearman_rho": -0.2632435953104646,
+        "spearman_p": 0.07064340592765278
+      }
+    },
+    "complaints_vs_narrative_share": {
+      "all": {
+        "pearson_r": -0.890906484099539,
+        "pearson_p": 2.232717357707073e-17,
+        "spearman_rho": -0.9140251845419017,
+        "spearman_p": 1.204515831509318e-19
+      },
+      "without_focus_product": {
+        "pearson_r": -0.2267848779543527,
+        "pearson_p": 0.1211249984196485,
+        "spearman_rho": -0.4219496309161963,
+        "spearman_p": 0.002815841558339198
+      }
+    },
+    "timely_response_rate_vs_narrative_share": {
+      "all": {
+        "pearson_r": -0.39257088605216556,
+        "pearson_p": 0.005782447266060286,
+        "spearman_rho": -0.4368215371254885,
+        "spearman_p": 0.001908055730389351
+      },
+      "without_focus_product": {
+        "pearson_r": 0.41326567793054325,
+        "pearson_p": 0.0035064407815005617,
+        "spearman_rho": 0.36007381676074685,
+        "spearman_p": 0.011941915441815084
+      }
+    }
+  }
+}

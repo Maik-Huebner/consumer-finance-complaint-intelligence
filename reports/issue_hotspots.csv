@@ -1,0 +1,165 @@
+product,issue,complaints,timely_response_rate,narrative_share,first_year_count,last_year_count,growth_first_to_last
+Credit reporting or other personal consumer reports,Incorrect information on your report,4653591,0.998907940126238,0.2144178549425594,225855,2815220,11.46472294171039
+Credit reporting or other personal consumer reports,Improper use of your report,2344426,0.9987242079724419,0.26445151179862364,209857,1098877,4.2363132990560235
+Credit reporting or other personal consumer reports,Problem with a company's investigation into an existing problem,1727343,0.9990013564184994,0.2730169977821429,152195,855162,4.618857386904957
+Debt collection,Attempts to collect debt not owed,253124,0.9772562064442724,0.4379079028460359,31082,115682,2.7218325719065697
+Debt collection,Written notification about debt,136842,0.9820596015843089,0.42499378845676034,12146,64049,4.273258685987156
+Checking or savings account,Managing an account,126516,0.9913607765025767,0.5418682222011445,22767,44959,0.9747441472306408
+Debt collection,Took or threatened to take negative or legal action,71711,0.9592531131904449,0.28786378658783174,5650,48578,7.59787610619469
+Debt collection,False statements or representation,66170,0.9701526371467433,0.4116820311319329,5141,38462,6.481423847500486
+"Money transfer, virtual currency, or money service",Other transaction problem,60997,0.9944915323704444,0.8139088807646278,1938,53893,26.808565531475747
+Credit card,Problem with a purchase shown on your statement,57350,0.9943853530950305,0.5620226678291195,10262,19810,0.9304229195088676
+Mortgage,Trouble during payment process,47322,0.9900257808207599,0.5729259118380458,11288,12680,0.12331679659815742
+Credit reporting or other personal consumer reports,Unable to get your credit report or credit score,36919,0.9973455402367345,0.3330534413174788,8133,14849,0.8257715480142629
+Student loan,Dealing with your lender or servicer,36759,0.8417258358497238,0.5562719334040643,6072,12076,0.9888010540184453
+Credit card,Getting a credit card,34630,0.9951487149870055,0.4512561362980075,6234,10805,0.7332370869425731
+Credit card,Incorrect information on your report,30673,0.9978156685032439,0.24066768819482934,1534,13735,7.953715775749673
+Checking or savings account,Closing an account,29277,0.9898555179834,0.5929910851521673,4902,10177,1.0760913912688697
+Credit reporting or other personal consumer reports,Problem with fraud alerts or security freezes,28651,0.9952532197829046,0.3543331820878852,2004,15069,6.519461077844311
+"Money transfer, virtual currency, or money service",Fraud or scam,28468,0.9811367149079668,0.6054517352817198,5822,11179,0.9201305393335624
+Credit reporting or other personal consumer reports,Credit monitoring or identity theft protection services,26456,0.9939522225582098,0.35719685515573024,3737,7968,1.132191597538132
+Checking or savings account,Problem with a lender or other company charging your account,26197,0.9909913348856739,0.5971676146123602,4116,9609,1.3345481049562684
+Credit card,"Other features, terms, or problems",25626,0.9957465074533677,0.5757433856239756,4142,8416,1.0318686624818927
+Debt collection,Communication tactics,25332,0.9701168482551713,0.5480814779725248,4407,9519,1.1599727705922396
+Credit card,Problem with a company's investigation into an existing problem,24118,0.9995853719213865,0.3590264532714155,0,10126,
+Mortgage,Struggling to pay mortgage,22911,0.991401510191611,0.5198376325782376,5643,5980,0.05972000708842806
+Credit card,Fees or interest,22011,0.9959565671709599,0.6121939030484758,3214,7836,1.4380833851897945
+Checking or savings account,Opening an account,20908,0.9911995408456094,0.4946910273579491,4216,6957,0.6501423149905123
+Checking or savings account,Problem caused by your funds being low,20146,0.9956815248684603,0.7170654224163606,1370,11939,7.714598540145985
+Vehicle loan or lease,Managing the loan or lease,16893,0.9847865979991712,0.5910732255964009,2653,5895,1.2220128156803618
+Credit card,Closing your account,16273,0.9955754931481595,0.581822651017022,2593,6224,1.400308522946394
+Credit card,Problem when making payments,16134,0.9947936035701004,0.5207636048097186,3674,4597,0.2512248230811105
+Mortgage,Applying for a mortgage or refinancing an existing mortgage,10688,0.9717440119760479,0.5584767964071856,3357,2597,-0.2263926124515937
+"Money transfer, virtual currency, or money service",Unauthorized transactions or other transaction problem,10138,0.9825409350956796,0.6141250739790886,1288,5758,3.470496894409938
+Vehicle loan or lease,Repossession,9913,0.9816402703520629,0.5629980833249268,0,5933,
+Credit card,"Advertising and marketing, including promotional offers",9799,0.9957138483518726,0.6472088988672313,1802,3105,0.723085460599334
+Student loan,Struggling to repay your loan,9541,0.8577717220417147,0.5280368934073997,1070,4296,3.0149532710280376
+Prepaid card,Trouble using the card,8952,0.9416890080428955,0.5768543342269884,906,2679,1.9569536423841059
+Credit card,Trouble using your card,8776,0.9928213309024613,0.6165679124886053,1567,3020,0.9272495213784302
+Vehicle loan or lease,Getting a loan or lease,8499,0.9832921520178844,0.5519472879162255,1670,2664,0.5952095808383233
+"Payday loan, title loan, personal loan, or advance loan",Charged fees or interest you didn't expect,8445,0.9519242155121374,0.6202486678507992,1204,3434,1.852159468438538
+Vehicle loan or lease,Problems at the end of the loan or lease,8130,0.9878228782287823,0.6076260762607626,1632,2687,0.6464460784313726
+Mortgage,Closing on a mortgage,7164,0.9677554438860971,0.6041317699609157,2040,2051,0.005392156862745079
+Debt collection,Electronic communications,6951,0.9775571860164005,0.5176233635448136,0,4312,
+Debt collection,Threatened to contact someone or share information improperly,6515,0.9611665387567153,0.5402916346891788,1012,2603,1.5721343873517788
+"Money transfer, virtual currency, or money service",Money was not available when promised,6295,0.9537728355837967,0.6258935663224782,1169,2429,1.0778443113772456
+Prepaid card,Problem with a purchase or transfer,6068,0.959789057350033,0.5807514831905076,1207,1832,0.5178127589063795
+Credit reporting or other personal consumer reports,Problem with a company's investigation into an existing issue,5268,0.9834851936218679,0.4863325740318907,712,2569,2.6081460674157304
+"Money transfer, virtual currency, or money service","Managing, opening, or closing your mobile wallet account",5162,0.9810151104223169,0.5707090275087175,1364,1773,0.29985337243401755
+Vehicle loan or lease,Struggling to pay your loan,4939,0.9842073294189108,0.5908078558412634,1397,973,-0.3035075161059413
+"Money transfer, virtual currency, or money service",Trouble accessing funds in your mobile or digital wallet,4844,0.9669694467382328,0.6831131296449215,0,3038,
+Credit card,Problem with a credit reporting company's investigation into an existing problem,4820,0.9985477178423237,0.8489626556016597,587,0,-1.0
+"Payday loan, title loan, personal loan, or advance loan",Problem when making payments,4528,0.9646643109540636,0.5726590106007067,872,1614,0.8509174311926606
+Vehicle loan or lease,Incorrect information on your report,4353,0.9839191362278888,0.43165632896852746,770,1683,1.1857142857142855
+"Payday loan, title loan, personal loan, or advance loan",Struggling to pay your loan,3876,0.9597523219814241,0.5696594427244582,568,1462,1.573943661971831
+Student loan,Incorrect information on your report,3616,0.8608960176991151,0.3968473451327434,366,2141,4.8497267759562845
+Debt or credit management,Didn't provide services promised,3525,0.9126241134751774,0.5086524822695035,819,1127,0.37606837606837606
+"Money transfer, virtual currency, or money service",Other service problem,3289,0.9790209790209791,0.6850106415323807,367,2064,4.623978201634878
+Credit card,Struggling to pay your bill,3204,0.9937578027465668,0.4937578027465668,478,1233,1.5794979079497908
+Prepaid card,Problem getting a card or closing an account,3097,0.9538262835001614,0.536648369389732,557,1105,0.9838420107719927
+"Money transfer, virtual currency, or money service",Confusing or missing disclosures,3058,0.9803793328973185,0.6239372138652715,333,1970,4.915915915915916
+"Payday loan, title loan, personal loan, or advance loan",Problem with the payoff process at the end of the loan,2902,0.9627842866988284,0.6140592694693315,566,1016,0.795053003533569
+"Payday loan, title loan, personal loan, or advance loan",Getting the loan,2851,0.9677306208347948,0.5678709224833391,507,1081,1.1321499013806706
+Credit card,Improper use of your report,2675,0.9955140186915887,0.4575700934579439,392,744,0.8979591836734695
+Prepaid card,Unexpected or other fees,2653,0.9566528458349038,0.6890312853373539,542,760,0.4022140221402215
+"Payday loan, title loan, personal loan, or advance loan",Incorrect information on your report,2460,0.9723577235772358,0.3975609756097561,391,897,1.2941176470588234
+Mortgage,Incorrect information on your report,2426,0.9925803792250618,0.46578730420445175,577,785,0.3604852686308493
+"Payday loan, title loan, personal loan, or advance loan",Problem with additional add-on products or services,2213,0.9620424762765477,0.6543154089471306,259,862,2.328185328185328
+Student loan,Improper use of your report,1796,0.8023385300668151,0.4760579064587973,107,1364,11.74766355140187
+"Payday loan, title loan, personal loan, or advance loan",Getting a line of credit,1794,0.9843924191750278,0.5016722408026756,478,406,-0.15062761506276146
+Debt or credit management,Confusing or missing disclosures,1706,0.9724501758499414,0.5937866354044549,200,846,3.2300000000000004
+"Money transfer, virtual currency, or money service",Unexpected or other fees,1504,0.9780585106382979,0.6529255319148937,245,647,1.6408163265306124
+Debt or credit management,Problem with customer service,1454,0.953232462173315,0.6361760660247593,219,606,1.7671232876712328
+Credit reporting or other personal consumer reports,Identity theft protection or other monitoring services,1432,0.9720670391061452,0.5844972067039106,186,581,2.1236559139784945
+"Money transfer, virtual currency, or money service",Problem with customer service,1397,0.9863994273443092,0.6206156048675734,200,547,1.7349999999999999
+Debt or credit management,Confusing or misleading advertising or marketing,1254,0.9338118022328549,0.6499202551834131,199,522,1.6231155778894473
+Debt or credit management,Charged upfront or unexpected fees,1206,0.8872305140961857,0.6177446102819237,0,700,
+Student loan,Getting a loan,1127,0.9751552795031055,0.580301685891748,176,369,1.0965909090909092
+Vehicle loan or lease,Improper use of your report,1086,0.9880294659300184,0.4567219152854512,182,257,0.4120879120879122
+Vehicle loan or lease,Problem with a company's investigation into an existing problem,986,0.9939148073022313,0.5091277890466531,0,566,
+"Money transfer, virtual currency, or money service",Wrong amount charged or received,947,0.9683210137275607,0.6029567053854277,153,459,2.0
+Student loan,Problem with a company's investigation into an existing problem,847,0.8642266824085005,0.45690672963400236,0,640,
+Mortgage,Problem with a company's investigation into an existing problem,817,0.9902080783353733,0.5446756425948592,0,448,
+"Payday loan, title loan, personal loan, or advance loan",Received a loan you didn't apply for,808,0.9628712871287128,0.6089108910891089,175,256,0.46285714285714286
+Debt or credit management,Unauthorized withdrawals or charges,781,0.9475032010243278,0.6427656850192062,0,465,
+"Payday loan, title loan, personal loan, or advance loan",Improper use of your report,657,0.9802130898021308,0.5312024353120244,97,179,0.8453608247422681
+Checking or savings account,Incorrect information on your report,610,0.9967213114754099,0.32295081967213113,129,224,0.7364341085271318
+"Money transfer, virtual currency, or money service",Confusing or misleading advertising or marketing,606,0.971947194719472,0.6551155115511551,88,350,2.977272727272727
+"Money transfer, virtual currency, or money service",Lost or stolen money order,560,0.9767857142857143,0.5642857142857143,59,224,2.7966101694915255
+"Payday loan, title loan, personal loan, or advance loan",Problem with a company's investigation into an existing problem,557,0.9820466786355476,0.5026929982046678,0,279,
+"Payday loan, title loan, personal loan, or advance loan",Can't contact lender or servicer,536,0.9421641791044776,0.6548507462686567,110,203,0.8454545454545455
+Credit card,Credit monitoring or identity theft protection services,529,0.998109640831758,0.5387523629489603,59,187,2.169491525423729
+"Payday loan, title loan, personal loan, or advance loan",Can't stop withdrawals from your bank account,499,0.9519038076152304,0.7154308617234469,74,209,1.8243243243243241
+Vehicle loan or lease,Problem with a credit reporting company's investigation into an existing problem,456,0.9868421052631579,0.5504385964912281,299,0,-1.0
+"Money transfer, virtual currency, or money service",Problem adding money,429,0.965034965034965,0.627039627039627,83,195,1.3493975903614457
+"Payday loan, title loan, personal loan, or advance loan",Loan payment wasn't credited to your account,408,0.9387254901960784,0.625,80,145,0.8125
+Mortgage,Improper use of your report,400,0.9875,0.5275,109,88,-0.19266055045871555
+"Payday loan, title loan, personal loan, or advance loan",Vehicle was repossessed or sold the vehicle,397,0.9017632241813602,0.6851385390428212,58,149,1.5689655172413794
+"Payday loan, title loan, personal loan, or advance loan",Money was taken from your bank account on the wrong day or for the wrong amount,339,0.9587020648967551,0.7315634218289085,59,133,1.2542372881355934
+Checking or savings account,Problem with a company's investigation into an existing problem,312,0.9967948717948718,0.5416666666666666,0,169,
+Mortgage,Problem with a credit reporting company's investigation into an existing problem,307,0.996742671009772,0.5863192182410424,201,0,-1.0
+Prepaid card,Advertising,286,0.9790209790209791,0.6048951048951049,64,99,0.546875
+Debt or credit management,Charged up-front or unexpected fees,278,0.9568345323741008,0.7410071942446043,172,0,-1.0
+"Payday loan, title loan, personal loan, or advance loan","Was approved for a loan, but didn't receive the money",275,0.9345454545454546,0.7054545454545454,49,105,1.1428571428571428
+"Payday loan, title loan, personal loan, or advance loan",Issues with repayment,236,0.9364406779661016,0.576271186440678,0,144,
+Student loan,Credit monitoring or identity theft protection services,223,0.8116591928251121,0.5426008968609866,21,151,6.190476190476191
+Credit card,Problem with fraud alerts or security freezes,215,1.0,0.5813953488372093,22,92,3.1818181818181817
+Checking or savings account,Improper use of your report,201,0.9900497512437811,0.48756218905472637,29,64,1.206896551724138
+Student loan,Problem with a credit reporting company's investigation into an existing problem,193,0.9948186528497409,0.538860103626943,130,0,-1.0
+Vehicle loan or lease,Credit monitoring or identity theft protection services,180,0.9888888888888889,0.5444444444444444,20,68,2.4
+"Payday loan, title loan, personal loan, or advance loan",Problem with a credit reporting company's investigation into an existing problem,161,0.9627329192546584,0.4409937888198758,96,0,-1.0
+Student loan,Issue with income share agreement,161,0.937888198757764,0.6024844720496895,0,94,
+"Payday loan, title loan, personal loan, or advance loan",Confusing or missing disclosures,153,0.9477124183006536,0.5620915032679739,10,78,6.8
+"Payday loan, title loan, personal loan, or advance loan",Problem with cash advance,153,0.954248366013072,0.6601307189542484,24,46,0.9166666666666667
+Student loan,Issue where my lender is my school,151,0.8344370860927153,0.6622516556291391,0,78,
+"Payday loan, title loan, personal loan, or advance loan",Confusing or misleading advertising or marketing,150,0.9466666666666667,0.64,5,73,13.6
+"Payday loan, title loan, personal loan, or advance loan",Credit monitoring or identity theft protection services,149,0.9664429530201343,0.5771812080536913,21,59,1.8095238095238093
+Checking or savings account,Problem with fraud alerts or security freezes,134,0.9925373134328358,0.6044776119402985,17,51,2.0
+Credit card,Unable to get your credit report or credit score,130,1.0,0.4846153846153846,22,49,1.227272727272727
+"Money transfer, virtual currency, or money service","Overdraft, savings, or rewards features",125,0.976,0.664,19,64,2.3684210526315788
+"Payday loan, title loan, personal loan, or advance loan",Problems receiving the advance,125,0.968,0.656,0,78,
+"Payday loan, title loan, personal loan, or advance loan",Credit limit changed,122,0.9754098360655737,0.5655737704918032,31,29,-0.06451612903225812
+"Money transfer, virtual currency, or money service",Lost or stolen check,118,0.9745762711864406,0.5508474576271186,69,0,-1.0
+Mortgage,Credit monitoring or identity theft protection services,115,1.0,0.48695652173913045,22,34,0.5454545454545454
+"Payday loan, title loan, personal loan, or advance loan",Unexpected fees,110,0.9090909090909091,0.6909090909090909,0,69,
+Checking or savings account,Credit monitoring or identity theft protection services,103,0.970873786407767,0.5631067961165048,13,35,1.6923076923076925
+"Payday loan, title loan, personal loan, or advance loan",Vehicle was damaged or destroyed the vehicle,103,0.970873786407767,0.6407766990291263,18,37,1.0555555555555554
+Student loan,Problem with fraud alerts or security freezes,99,0.7777777777777778,0.5656565656565656,8,78,8.75
+Debt or credit management,Excessive fees,97,0.9587628865979382,0.6391752577319587,44,0,-1.0
+"Money transfer, virtual currency, or money service",Incorrect exchange rate,97,0.9896907216494846,0.6494845360824743,21,29,0.38095238095238093
+Prepaid card,Problem with overdraft,96,0.96875,0.6770833333333334,20,27,0.3500000000000001
+Vehicle loan or lease,Unable to get your credit report or credit score,96,0.9479166666666666,0.5208333333333334,13,27,1.076923076923077
+"Payday loan, title loan, personal loan, or advance loan",Lost or stolen check,91,0.978021978021978,0.6483516483516484,47,0,-1.0
+"Payday loan, title loan, personal loan, or advance loan",Fraud or scam,86,0.9651162790697675,0.6511627906976745,48,0,-1.0
+Mortgage,Unable to get your credit report or credit score,68,0.9852941176470589,0.5882352941176471,25,19,-0.24
+"Payday loan, title loan, personal loan, or advance loan",Problem with customer service,68,0.9558823529411765,0.5441176470588235,35,0,-1.0
+"Payday loan, title loan, personal loan, or advance loan",Problem with fraud alerts or security freezes,65,0.9538461538461539,0.6153846153846154,8,34,3.25
+"Payday loan, title loan, personal loan, or advance loan","Was approved for a loan, but didn't receive money",61,0.9836065573770492,0.6557377049180327,11,23,1.0909090909090908
+Mortgage,Problem with fraud alerts or security freezes,49,0.9795918367346939,0.5918367346938775,16,15,-0.0625
+"Payday loan, title loan, personal loan, or advance loan",Unable to get your credit report or credit score,45,0.9333333333333333,0.6222222222222222,6,17,1.8333333333333335
+Checking or savings account,Problem with a credit reporting company's investigation into an existing problem,39,1.0,0.5384615384615384,19,0,-1.0
+Student loan,Unable to get your credit report or credit score,33,0.8181818181818182,0.696969696969697,2,17,7.5
+Vehicle loan or lease,Problem with fraud alerts or security freezes,30,0.9666666666666667,0.7666666666666667,3,15,4.0
+Checking or savings account,Unable to get your credit report or credit score,21,0.9523809523809523,0.38095238095238093,4,10,1.5
+"Payday loan, title loan, personal loan, or advance loan",Property was sold,18,0.8333333333333334,0.6111111111111112,0,13,
+"Payday loan, title loan, personal loan, or advance loan",Unexpected or other fees,14,1.0,0.6428571428571429,7,0,-1.0
+"Payday loan, title loan, personal loan, or advance loan",Lost or stolen refund,11,0.9090909090909091,0.5454545454545454,0,4,
+Credit reporting or other personal consumer reports,Getting a credit card,10,1.0,0.1,5,0,-1.0
+Credit reporting or other personal consumer reports,Getting a loan,6,1.0,0.6666666666666666,1,0,-1.0
+Checking or savings account,Issue not provided,5,1.0,0.0,,,
+"Payday loan, title loan, personal loan, or advance loan",Property was damaged or destroyed property,5,1.0,0.6,0,4,
+Credit reporting or other personal consumer reports,Dealing with your lender or servicer,4,1.0,0.25,0,4,
+Credit reporting or other personal consumer reports,"Other features, terms, or problems",4,1.0,0.75,,,
+Credit reporting or other personal consumer reports,Problems at the end of the loan or lease,4,1.0,0.0,0,2,
+Credit reporting or other personal consumer reports,Getting a loan or lease,3,1.0,1.0,3,0,-1.0
+Credit reporting or other personal consumer reports,Closing an account,2,1.0,0.0,2,0,-1.0
+Credit reporting or other personal consumer reports,Problem with a purchase shown on your statement,2,1.0,1.0,0,1,
+Credit reporting or other personal consumer reports,Trouble during payment process,2,1.0,1.0,1,0,-1.0
+Credit reporting or other personal consumer reports,"Advertising and marketing, including promotional offers",1,1.0,1.0,,,
+Credit reporting or other personal consumer reports,Issue not provided,1,1.0,0.0,,,
+Credit reporting or other personal consumer reports,Managing an account,1,1.0,0.0,0,1,
+Credit reporting or other personal consumer reports,Struggling to pay your loan,1,1.0,1.0,,,
+Credit reporting or other personal consumer reports,Struggling to repay your loan,1,1.0,1.0,0,1,
+Credit reporting or other personal consumer reports,Trouble using your card,1,1.0,1.0,1,0,-1.0
+Prepaid card,Problem with an overdraft,1,1.0,1.0,1,0,-1.0
+Vehicle loan or lease,Problem with credit report or credit score,1,1.0,0.0,0,1,

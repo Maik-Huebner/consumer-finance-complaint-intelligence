@@ -1,0 +1,32 @@
+{
+  "rows": 10269540,
+  "columns": 16,
+  "duplicate_complaint_ids": 0,
+  "missing_complaint_ids": 0,
+  "missing_harmonized_products": 0,
+  "missing_harmonized_issues": 0,
+  "negative_days_to_company": 0,
+  "unexpected_timely_values": [],
+  "unexpected_taxonomy_versions": [],
+  "min_date": "2022-01-01",
+  "max_date": "2025-12-31",
+  "missing_percent": {
+    "complaint_id": 0.0,
+    "date_received": 0.0,
+    "product": 0.0,
+    "issue": 0.0,
+    "harmonized_product": 0.0,
+    "harmonized_issue": 0.0,
+    "taxonomy_version": 0.0,
+    "company": 0.0,
+    "date_sent_to_company": 0.0,
+    "company_response": 0.0,
+    "timely_response": 0.0,
+    "year": 0.0,
+    "year_month": 0.0,
+    "days_to_company": 0.0,
+    "has_narrative": 0.0,
+    "is_timely": 0.0
+  },
+  "passed": true
+}

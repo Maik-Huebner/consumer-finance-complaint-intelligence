@@ -1,0 +1,21 @@
+project:
+  name: "Consumer Finance Complaint Intelligence Platform"
+  analysis_start: "2022-01-01"
+  analysis_end: "2025-12-31"
+  top_n_products: 10
+  top_n_issues: 15
+  top_n_companies: 25
+  minimum_company_complaints: 1000
+  minimum_product_complaints: 500
+  rolling_window_months: 12
+
+data:
+  source_url: "https://files.consumerfinance.gov/ccdb/complaints.csv.zip"
+  zip_filename: "complaints.csv.zip"
+  csv_filename: "complaints.csv"
+  processed_filename: "complaints_analytics.parquet"
+  raw_dir: "data/raw"
+  interim_dir: "data/interim"
+  processed_dir: "data/processed"
+  reports_dir: "reports"
+  figures_dir: "reports/figures"

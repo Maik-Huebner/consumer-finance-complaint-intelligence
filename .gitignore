@@ -1,0 +1,40 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+
+# Virtual environments and local environment files
+.venv/
+venv/
+.env
+.env.*
+
+# IDE / OS
+.DS_Store
+.idea/
+.vscode/
+
+# Local data
+data/raw/*
+!data/raw/.gitkeep
+
+data/interim/*
+!data/interim/.gitkeep
+
+data/processed/*
+!data/processed/.gitkeep
+
+data/external/*
+!data/external/.gitkeep
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Temporary files
+*.tmp
+*.part

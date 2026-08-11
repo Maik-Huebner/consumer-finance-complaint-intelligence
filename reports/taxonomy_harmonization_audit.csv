@@ -1,0 +1,185 @@
+dimension,context_product,source_value,harmonized_value,complaints,changed,change_type
+issue,Credit reporting or other personal consumer reports,Problem with a credit reporting company's investigation into an existing problem,Problem with a company's investigation into an existing problem,331276,True,taxonomy_harmonization
+issue,Debt or credit management,Fraud or scam,Didn't provide services promised,1529,True,taxonomy_harmonization
+issue,Debt or credit management,Unexpected or other fees,Charged up-front or unexpected fees,278,True,taxonomy_harmonization
+issue,Checking or savings account,,Issue not provided,5,True,missing_value_handling
+issue,Credit reporting or other personal consumer reports,,Issue not provided,1,True,missing_value_handling
+product,,"Credit reporting, credit repair services, or other personal consumer reports",Credit reporting or other personal consumer reports,1246185,True,taxonomy_harmonization
+product,,Credit card or prepaid card,Credit card,69123,True,taxonomy_harmonization
+product,,"Payday loan, title loan, or personal loan","Payday loan, title loan, personal loan, or advance loan",10446,True,taxonomy_harmonization
+product,,Credit card or prepaid card,Prepaid card,6066,True,taxonomy_harmonization
+product,,"Credit reporting, credit repair services, or other personal consumer reports",Debt or credit management,2811,True,taxonomy_harmonization
+product,,"Money transfer, virtual currency, or money service",Debt or credit management,327,True,taxonomy_harmonization
+product,,"Money transfer, virtual currency, or money service","Payday loan, title loan, personal loan, or advance loan",292,True,taxonomy_harmonization
+issue,Credit reporting or other personal consumer reports,Incorrect information on your report,Incorrect information on your report,4653591,False,unchanged
+issue,Credit reporting or other personal consumer reports,Improper use of your report,Improper use of your report,2344426,False,unchanged
+issue,Credit reporting or other personal consumer reports,Problem with a company's investigation into an existing problem,Problem with a company's investigation into an existing problem,1396067,False,unchanged
+issue,Debt collection,Attempts to collect debt not owed,Attempts to collect debt not owed,253124,False,unchanged
+issue,Debt collection,Written notification about debt,Written notification about debt,136842,False,unchanged
+issue,Checking or savings account,Managing an account,Managing an account,126516,False,unchanged
+issue,Debt collection,Took or threatened to take negative or legal action,Took or threatened to take negative or legal action,71711,False,unchanged
+issue,Debt collection,False statements or representation,False statements or representation,66170,False,unchanged
+issue,"Money transfer, virtual currency, or money service",Other transaction problem,Other transaction problem,60997,False,unchanged
+issue,Credit card,Problem with a purchase shown on your statement,Problem with a purchase shown on your statement,57350,False,unchanged
+issue,Mortgage,Trouble during payment process,Trouble during payment process,47322,False,unchanged
+issue,Credit reporting or other personal consumer reports,Unable to get your credit report or credit score,Unable to get your credit report or credit score,36919,False,unchanged
+issue,Student loan,Dealing with your lender or servicer,Dealing with your lender or servicer,36759,False,unchanged
+issue,Credit card,Getting a credit card,Getting a credit card,34630,False,unchanged
+issue,Credit card,Incorrect information on your report,Incorrect information on your report,30673,False,unchanged
+issue,Checking or savings account,Closing an account,Closing an account,29277,False,unchanged
+issue,Credit reporting or other personal consumer reports,Problem with fraud alerts or security freezes,Problem with fraud alerts or security freezes,28651,False,unchanged
+issue,"Money transfer, virtual currency, or money service",Fraud or scam,Fraud or scam,28468,False,unchanged
+issue,Credit reporting or other personal consumer reports,Credit monitoring or identity theft protection services,Credit monitoring or identity theft protection services,26456,False,unchanged
+issue,Checking or savings account,Problem with a lender or other company charging your account,Problem with a lender or other company charging your account,26197,False,unchanged
+issue,Credit card,"Other features, terms, or problems","Other features, terms, or problems",25626,False,unchanged
+issue,Debt collection,Communication tactics,Communication tactics,25332,False,unchanged
+issue,Credit card,Problem with a company's investigation into an existing problem,Problem with a company's investigation into an existing problem,24118,False,unchanged
+issue,Mortgage,Struggling to pay mortgage,Struggling to pay mortgage,22911,False,unchanged
+issue,Credit card,Fees or interest,Fees or interest,22011,False,unchanged
+issue,Checking or savings account,Opening an account,Opening an account,20908,False,unchanged
+issue,Checking or savings account,Problem caused by your funds being low,Problem caused by your funds being low,20146,False,unchanged
+issue,Vehicle loan or lease,Managing the loan or lease,Managing the loan or lease,16893,False,unchanged
+issue,Credit card,Closing your account,Closing your account,16273,False,unchanged
+issue,Credit card,Problem when making payments,Problem when making payments,16134,False,unchanged
+issue,Mortgage,Applying for a mortgage or refinancing an existing mortgage,Applying for a mortgage or refinancing an existing mortgage,10688,False,unchanged
+issue,"Money transfer, virtual currency, or money service",Unauthorized transactions or other transaction problem,Unauthorized transactions or other transaction problem,10138,False,unchanged
+issue,Vehicle loan or lease,Repossession,Repossession,9913,False,unchanged
+issue,Credit card,"Advertising and marketing, including promotional offers","Advertising and marketing, including promotional offers",9799,False,unchanged
+issue,Student loan,Struggling to repay your loan,Struggling to repay your loan,9541,False,unchanged
+issue,Prepaid card,Trouble using the card,Trouble using the card,8952,False,unchanged
+issue,Credit card,Trouble using your card,Trouble using your card,8776,False,unchanged
+issue,Vehicle loan or lease,Getting a loan or lease,Getting a loan or lease,8499,False,unchanged
+issue,"Payday loan, title loan, personal loan, or advance loan",Charged fees or interest you didn't expect,Charged fees or interest you didn't expect,8445,False,unchanged
+issue,Vehicle loan or lease,Problems at the end of the loan or lease,Problems at the end of the loan or lease,8130,False,unchanged
+issue,Mortgage,Closing on a mortgage,Closing on a mortgage,7164,False,unchanged
+issue,Debt collection,Electronic communications,Electronic communications,6951,False,unchanged
+issue,Debt collection,Threatened to contact someone or share information improperly,Threatened to contact someone or share information improperly,6515,False,unchanged
+issue,"Money transfer, virtual currency, or money service",Money was not available when promised,Money was not available when promised,6295,False,unchanged
+issue,Prepaid card,Problem with a purchase or transfer,Problem with a purchase or transfer,6068,False,unchanged
+issue,Credit reporting or other personal consumer reports,Problem with a company's investigation into an existing issue,Problem with a company's investigation into an existing issue,5268,False,unchanged
+issue,"Money transfer, virtual currency, or money service","Managing, opening, or closing your mobile wallet account","Managing, opening, or closing your mobile wallet account",5162,False,unchanged
+issue,Vehicle loan or lease,Struggling to pay your loan,Struggling to pay your loan,4939,False,unchanged
+issue,"Money transfer, virtual currency, or money service",Trouble accessing funds in your mobile or digital wallet,Trouble accessing funds in your mobile or digital wallet,4844,False,unchanged
+issue,Credit card,Problem with a credit reporting company's investigation into an existing problem,Problem with a credit reporting company's investigation into an existing problem,4820,False,unchanged
+issue,"Payday loan, title loan, personal loan, or advance loan",Problem when making payments,Problem when making payments,4528,False,unchanged
+issue,Vehicle loan or lease,Incorrect information on your report,Incorrect information on your report,4353,False,unchanged
+issue,"Payday loan, title loan, personal loan, or advance loan",Struggling to pay your loan,Struggling to pay your loan,3876,False,unchanged
+issue,Student loan,Incorrect information on your report,Incorrect information on your report,3616,False,unchanged
+issue,"Money transfer, virtual currency, or money service",Other service problem,Other service problem,3289,False,unchanged
+issue,Credit card,Struggling to pay your bill,Struggling to pay your bill,3204,False,unchanged
+issue,Prepaid card,Problem getting a card or closing an account,Problem getting a card or closing an account,3097,False,unchanged
+issue,"Money transfer, virtual currency, or money service",Confusing or missing disclosures,Confusing or missing disclosures,3058,False,unchanged
+issue,"Payday loan, title loan, personal loan, or advance loan",Problem with the payoff process at the end of the loan,Problem with the payoff process at the end of the loan,2902,False,unchanged
+issue,"Payday loan, title loan, personal loan, or advance loan",Getting the loan,Getting the loan,2851,False,unchanged
+issue,Credit card,Improper use of your report,Improper use of your report,2675,False,unchanged
+issue,Prepaid card,Unexpected or other fees,Unexpected or other fees,2653,False,unchanged
+issue,"Payday loan, title loan, personal loan, or advance loan",Incorrect information on your report,Incorrect information on your report,2460,False,unchanged
+issue,Mortgage,Incorrect information on your report,Incorrect information on your report,2426,False,unchanged
+issue,"Payday loan, title loan, personal loan, or advance loan",Problem with additional add-on products or services,Problem with additional add-on products or services,2213,False,unchanged
+issue,Debt or credit management,Didn't provide services promised,Didn't provide services promised,1996,False,unchanged
+issue,Student loan,Improper use of your report,Improper use of your report,1796,False,unchanged
+issue,"Payday loan, title loan, personal loan, or advance loan",Getting a line of credit,Getting a line of credit,1794,False,unchanged
+issue,Debt or credit management,Confusing or missing disclosures,Confusing or missing disclosures,1706,False,unchanged
+issue,"Money transfer, virtual currency, or money service",Unexpected or other fees,Unexpected or other fees,1504,False,unchanged
+issue,Debt or credit management,Problem with customer service,Problem with customer service,1454,False,unchanged
+issue,Credit reporting or other personal consumer reports,Identity theft protection or other monitoring services,Identity theft protection or other monitoring services,1432,False,unchanged
+issue,"Money transfer, virtual currency, or money service",Problem with customer service,Problem with customer service,1397,False,unchanged
+issue,Debt or credit management,Confusing or misleading advertising or marketing,Confusing or misleading advertising or marketing,1254,False,unchanged
+issue,Debt or credit management,Charged upfront or unexpected fees,Charged upfront or unexpected fees,1206,False,unchanged
+issue,Student loan,Getting a loan,Getting a loan,1127,False,unchanged
+issue,Vehicle loan or lease,Improper use of your report,Improper use of your report,1086,False,unchanged
+issue,Vehicle loan or lease,Problem with a company's investigation into an existing problem,Problem with a company's investigation into an existing problem,986,False,unchanged
+issue,"Money transfer, virtual currency, or money service",Wrong amount charged or received,Wrong amount charged or received,947,False,unchanged
+issue,Student loan,Problem with a company's investigation into an existing problem,Problem with a company's investigation into an existing problem,847,False,unchanged
+issue,Mortgage,Problem with a company's investigation into an existing problem,Problem with a company's investigation into an existing problem,817,False,unchanged
+issue,"Payday loan, title loan, personal loan, or advance loan",Received a loan you didn't apply for,Received a loan you didn't apply for,808,False,unchanged
+issue,Debt or credit management,Unauthorized withdrawals or charges,Unauthorized withdrawals or charges,781,False,unchanged
+issue,"Payday loan, title loan, personal loan, or advance loan",Improper use of your report,Improper use of your report,657,False,unchanged
+issue,Checking or savings account,Incorrect information on your report,Incorrect information on your report,610,False,unchanged
+issue,"Money transfer, virtual currency, or money service",Confusing or misleading advertising or marketing,Confusing or misleading advertising or marketing,606,False,unchanged
+issue,"Money transfer, virtual currency, or money service",Lost or stolen money order,Lost or stolen money order,560,False,unchanged
+issue,"Payday loan, title loan, personal loan, or advance loan",Problem with a company's investigation into an existing problem,Problem with a company's investigation into an existing problem,557,False,unchanged
+issue,"Payday loan, title loan, personal loan, or advance loan",Can't contact lender or servicer,Can't contact lender or servicer,536,False,unchanged
+issue,Credit card,Credit monitoring or identity theft protection services,Credit monitoring or identity theft protection services,529,False,unchanged
+issue,"Payday loan, title loan, personal loan, or advance loan",Can't stop withdrawals from your bank account,Can't stop withdrawals from your bank account,499,False,unchanged
+issue,Vehicle loan or lease,Problem with a credit reporting company's investigation into an existing problem,Problem with a credit reporting company's investigation into an existing problem,456,False,unchanged
+issue,"Money transfer, virtual currency, or money service",Problem adding money,Problem adding money,429,False,unchanged
+issue,"Payday loan, title loan, personal loan, or advance loan",Loan payment wasn't credited to your account,Loan payment wasn't credited to your account,408,False,unchanged
+issue,Mortgage,Improper use of your report,Improper use of your report,400,False,unchanged
+issue,"Payday loan, title loan, personal loan, or advance loan",Vehicle was repossessed or sold the vehicle,Vehicle was repossessed or sold the vehicle,397,False,unchanged
+issue,"Payday loan, title loan, personal loan, or advance loan",Money was taken from your bank account on the wrong day or for the wrong amount,Money was taken from your bank account on the wrong day or for the wrong amount,339,False,unchanged
+issue,Checking or savings account,Problem with a company's investigation into an existing problem,Problem with a company's investigation into an existing problem,312,False,unchanged
+issue,Mortgage,Problem with a credit reporting company's investigation into an existing problem,Problem with a credit reporting company's investigation into an existing problem,307,False,unchanged
+issue,Prepaid card,Advertising,Advertising,286,False,unchanged
+issue,"Payday loan, title loan, personal loan, or advance loan","Was approved for a loan, but didn't receive the money","Was approved for a loan, but didn't receive the money",275,False,unchanged
+issue,"Payday loan, title loan, personal loan, or advance loan",Issues with repayment,Issues with repayment,236,False,unchanged
+issue,Student loan,Credit monitoring or identity theft protection services,Credit monitoring or identity theft protection services,223,False,unchanged
+issue,Credit card,Problem with fraud alerts or security freezes,Problem with fraud alerts or security freezes,215,False,unchanged
+issue,Checking or savings account,Improper use of your report,Improper use of your report,201,False,unchanged
+issue,Student loan,Problem with a credit reporting company's investigation into an existing problem,Problem with a credit reporting company's investigation into an existing problem,193,False,unchanged
+issue,Vehicle loan or lease,Credit monitoring or identity theft protection services,Credit monitoring or identity theft protection services,180,False,unchanged
+issue,"Payday loan, title loan, personal loan, or advance loan",Problem with a credit reporting company's investigation into an existing problem,Problem with a credit reporting company's investigation into an existing problem,161,False,unchanged
+issue,Student loan,Issue with income share agreement,Issue with income share agreement,161,False,unchanged
+issue,"Payday loan, title loan, personal loan, or advance loan",Confusing or missing disclosures,Confusing or missing disclosures,153,False,unchanged
+issue,"Payday loan, title loan, personal loan, or advance loan",Problem with cash advance,Problem with cash advance,153,False,unchanged
+issue,Student loan,Issue where my lender is my school,Issue where my lender is my school,151,False,unchanged
+issue,"Payday loan, title loan, personal loan, or advance loan",Confusing or misleading advertising or marketing,Confusing or misleading advertising or marketing,150,False,unchanged
+issue,"Payday loan, title loan, personal loan, or advance loan",Credit monitoring or identity theft protection services,Credit monitoring or identity theft protection services,149,False,unchanged
+issue,Checking or savings account,Problem with fraud alerts or security freezes,Problem with fraud alerts or security freezes,134,False,unchanged
+issue,Credit card,Unable to get your credit report or credit score,Unable to get your credit report or credit score,130,False,unchanged
+issue,"Money transfer, virtual currency, or money service","Overdraft, savings, or rewards features","Overdraft, savings, or rewards features",125,False,unchanged
+issue,"Payday loan, title loan, personal loan, or advance loan",Problems receiving the advance,Problems receiving the advance,125,False,unchanged
+issue,"Payday loan, title loan, personal loan, or advance loan",Credit limit changed,Credit limit changed,122,False,unchanged
+issue,"Money transfer, virtual currency, or money service",Lost or stolen check,Lost or stolen check,118,False,unchanged
+issue,Mortgage,Credit monitoring or identity theft protection services,Credit monitoring or identity theft protection services,115,False,unchanged
+issue,"Payday loan, title loan, personal loan, or advance loan",Unexpected fees,Unexpected fees,110,False,unchanged
+issue,Checking or savings account,Credit monitoring or identity theft protection services,Credit monitoring or identity theft protection services,103,False,unchanged
+issue,"Payday loan, title loan, personal loan, or advance loan",Vehicle was damaged or destroyed the vehicle,Vehicle was damaged or destroyed the vehicle,103,False,unchanged
+issue,Student loan,Problem with fraud alerts or security freezes,Problem with fraud alerts or security freezes,99,False,unchanged
+issue,Debt or credit management,Excessive fees,Excessive fees,97,False,unchanged
+issue,"Money transfer, virtual currency, or money service",Incorrect exchange rate,Incorrect exchange rate,97,False,unchanged
+issue,Prepaid card,Problem with overdraft,Problem with overdraft,96,False,unchanged
+issue,Vehicle loan or lease,Unable to get your credit report or credit score,Unable to get your credit report or credit score,96,False,unchanged
+issue,"Payday loan, title loan, personal loan, or advance loan",Lost or stolen check,Lost or stolen check,91,False,unchanged
+issue,"Payday loan, title loan, personal loan, or advance loan",Fraud or scam,Fraud or scam,86,False,unchanged
+issue,Mortgage,Unable to get your credit report or credit score,Unable to get your credit report or credit score,68,False,unchanged
+issue,"Payday loan, title loan, personal loan, or advance loan",Problem with customer service,Problem with customer service,68,False,unchanged
+issue,"Payday loan, title loan, personal loan, or advance loan",Problem with fraud alerts or security freezes,Problem with fraud alerts or security freezes,65,False,unchanged
+issue,"Payday loan, title loan, personal loan, or advance loan","Was approved for a loan, but didn't receive money","Was approved for a loan, but didn't receive money",61,False,unchanged
+issue,Mortgage,Problem with fraud alerts or security freezes,Problem with fraud alerts or security freezes,49,False,unchanged
+issue,"Payday loan, title loan, personal loan, or advance loan",Unable to get your credit report or credit score,Unable to get your credit report or credit score,45,False,unchanged
+issue,Checking or savings account,Problem with a credit reporting company's investigation into an existing problem,Problem with a credit reporting company's investigation into an existing problem,39,False,unchanged
+issue,Student loan,Unable to get your credit report or credit score,Unable to get your credit report or credit score,33,False,unchanged
+issue,Vehicle loan or lease,Problem with fraud alerts or security freezes,Problem with fraud alerts or security freezes,30,False,unchanged
+issue,Checking or savings account,Unable to get your credit report or credit score,Unable to get your credit report or credit score,21,False,unchanged
+issue,"Payday loan, title loan, personal loan, or advance loan",Property was sold,Property was sold,18,False,unchanged
+issue,"Payday loan, title loan, personal loan, or advance loan",Unexpected or other fees,Unexpected or other fees,14,False,unchanged
+issue,"Payday loan, title loan, personal loan, or advance loan",Lost or stolen refund,Lost or stolen refund,11,False,unchanged
+issue,Credit reporting or other personal consumer reports,Getting a credit card,Getting a credit card,10,False,unchanged
+issue,Credit reporting or other personal consumer reports,Getting a loan,Getting a loan,6,False,unchanged
+issue,"Payday loan, title loan, personal loan, or advance loan",Property was damaged or destroyed property,Property was damaged or destroyed property,5,False,unchanged
+issue,Credit reporting or other personal consumer reports,Dealing with your lender or servicer,Dealing with your lender or servicer,4,False,unchanged
+issue,Credit reporting or other personal consumer reports,"Other features, terms, or problems","Other features, terms, or problems",4,False,unchanged
+issue,Credit reporting or other personal consumer reports,Problems at the end of the loan or lease,Problems at the end of the loan or lease,4,False,unchanged
+issue,Credit reporting or other personal consumer reports,Getting a loan or lease,Getting a loan or lease,3,False,unchanged
+issue,Credit reporting or other personal consumer reports,Closing an account,Closing an account,2,False,unchanged
+issue,Credit reporting or other personal consumer reports,Problem with a purchase shown on your statement,Problem with a purchase shown on your statement,2,False,unchanged
+issue,Credit reporting or other personal consumer reports,Trouble during payment process,Trouble during payment process,2,False,unchanged
+issue,Credit reporting or other personal consumer reports,"Advertising and marketing, including promotional offers","Advertising and marketing, including promotional offers",1,False,unchanged
+issue,Credit reporting or other personal consumer reports,Managing an account,Managing an account,1,False,unchanged
+issue,Credit reporting or other personal consumer reports,Struggling to pay your loan,Struggling to pay your loan,1,False,unchanged
+issue,Credit reporting or other personal consumer reports,Struggling to repay your loan,Struggling to repay your loan,1,False,unchanged
+issue,Credit reporting or other personal consumer reports,Trouble using your card,Trouble using your card,1,False,unchanged
+issue,Prepaid card,Problem with an overdraft,Problem with an overdraft,1,False,unchanged
+issue,Vehicle loan or lease,Problem with credit report or credit score,Problem with credit report or credit score,1,False,unchanged
+product,,Credit reporting or other personal consumer reports,Credit reporting or other personal consumer reports,7577944,False,unchanged
+product,,Debt collection,Debt collection,566645,False,unchanged
+product,,Checking or savings account,Checking or savings account,224469,False,unchanged
+product,,Credit card,Credit card,187840,False,unchanged
+product,,"Money transfer, virtual currency, or money service","Money transfer, virtual currency, or money service",128034,False,unchanged
+product,,Mortgage,Mortgage,92267,False,unchanged
+product,,Vehicle loan or lease,Vehicle loan or lease,55562,False,unchanged
+product,,Student loan,Student loan,54546,False,unchanged
+product,,"Payday loan, title loan, personal loan, or advance loan","Payday loan, title loan, personal loan, or advance loan",24733,False,unchanged
+product,,Prepaid card,Prepaid card,15087,False,unchanged
+product,,Debt or credit management,Debt or credit management,7163,False,unchanged
