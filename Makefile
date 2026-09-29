@@ -1,44 +1,58 @@
-.PHONY: \
-	install \
-	download \
-	pipeline \
-	analysis \
-	test \
-	test-strict \
-	lint \
-	quality \
-	all \
-	reproduce \
-	clean
+PYTHON ?= python
+PYTHON_MINOR := $(shell $(PYTHON) -c "import sys; print(f'{sys.version_info.major}{sys.version_info.minor}')")
+LOCK_FILE ?= requirements/lock-py$(PYTHON_MINOR).txt
+
+.PHONY: install install-editable download pipeline analysis test lint format-check audit \
+	evidence-check notebook-check quality build wheel-smoke reproduce all clean
 
 install:
-	python -m pip install -e ".[dev]"
+	$(PYTHON) -m pip install -r $(LOCK_FILE)
+	$(PYTHON) -m pip install --no-deps --no-build-isolation .
+
+install-editable:
+	$(PYTHON) -m pip install -r $(LOCK_FILE)
+	$(PYTHON) -m pip install --no-deps --no-build-isolation -e .
 
 download:
-	python scripts/download_data.py
+	$(PYTHON) scripts/download_data.py
 
 pipeline:
-	python scripts/run_pipeline.py
+	$(PYTHON) scripts/run_pipeline.py
 
 analysis:
-	python scripts/run_analysis.py
+	$(PYTHON) scripts/run_analysis.py
 
 test:
-	pytest -q
-
-test-strict:
-	pytest -q -W error
+	$(PYTHON) -m pytest -q -W error
 
 lint:
-	ruff check .
+	$(PYTHON) -m ruff check .
 
-quality: lint test-strict
+format-check:
+	$(PYTHON) -m ruff format --check .
 
-all: quality
+audit:
+	$(PYTHON) scripts/audit_repository.py
 
-reproduce: pipeline
+evidence-check:
+	$(PYTHON) scripts/validate_reports.py
+
+notebook-check:
+	$(PYTHON) scripts/execute_notebook.py
+
+quality: lint format-check test audit evidence-check notebook-check
+
+build:
+	$(PYTHON) -m build --no-isolation
+
+wheel-smoke: build
+	$(PYTHON) scripts/wheel_smoke.py
+
+reproduce: evidence-check notebook-check
+
+all: quality build
 
 clean:
-	rm -rf .pytest_cache .ruff_cache htmlcov
+	rm -rf .pytest_cache .ruff_cache build dist htmlcov
 	find . -type d -name "__pycache__" -prune -exec rm -rf {} +
 	rm -f .coverage

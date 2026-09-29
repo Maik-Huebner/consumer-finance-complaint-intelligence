@@ -86,14 +86,9 @@ def sample_raw_csv(
         },
     ]
 
-    path = (
-        tmp_path
-        / "complaints.csv"
-    )
+    path = tmp_path / "complaints.csv"
 
-    pd.DataFrame(
-        rows
-    ).to_csv(
+    pd.DataFrame(rows).to_csv(
         path,
         index=False,
     )
@@ -118,42 +113,25 @@ def analytical_df() -> pd.DataFrame:
     ):
         if idx % 2:
             product = "Credit card"
-            harmonized_product = (
-                "Credit card"
-            )
+            harmonized_product = "Credit card"
             issue = "Billing"
-            harmonized_issue = (
-                "Billing"
-            )
+            harmonized_issue = "Billing"
         else:
             product = "Mortgage"
-            harmonized_product = (
-                "Mortgage"
-            )
+            harmonized_product = "Mortgage"
             issue = "Payment process"
-            harmonized_issue = (
-                "Payment process"
-            )
+            harmonized_issue = "Payment process"
 
         # Include one historical product label and one historical issue label
         # so taxonomy-audit behavior is exercised in the analytical tests.
         if idx == 1:
-            product = (
-                "Credit card or prepaid card"
-            )
+            product = "Credit card or prepaid card"
 
         if idx == 2:
-            issue = (
-                "Legacy payment wording"
-            )
+            issue = "Legacy payment wording"
 
         taxonomy_version = (
-            "pre_aug_2023"
-            if date
-            < pd.Timestamp(
-                "2023-08-24"
-            )
-            else "aug_2023_or_later"
+            "pre_aug_2023" if date < pd.Timestamp("2023-08-24") else "aug_2023_or_later"
         )
 
         rows.append(
@@ -165,34 +143,15 @@ def analytical_df() -> pd.DataFrame:
                 "harmonized_product": harmonized_product,
                 "harmonized_issue": harmonized_issue,
                 "taxonomy_version": taxonomy_version,
-                "company": (
-                    "Bank A"
-                    if idx % 3
-                    else "Bank B"
-                ),
-                "date_sent_to_company": (
-                    date
-                    + pd.Timedelta(
-                        days=1
-                    )
-                ),
-                "company_response": (
-                    "Closed with explanation"
-                ),
-                "timely_response": (
-                    "Yes"
-                    if idx % 5
-                    else "No"
-                ),
+                "company": ("Bank A" if idx % 3 else "Bank B"),
+                "date_sent_to_company": (date + pd.Timedelta(days=1)),
+                "company_response": ("Closed with explanation"),
+                "timely_response": ("Yes" if idx % 5 else "No"),
                 "year": date.year,
                 "year_month": date,
                 "days_to_company": 1,
-                "has_narrative": (
-                    idx % 2 == 0
-                ),
-                "is_timely": (
-                    idx % 5 != 0
-                ),
+                "has_narrative": (idx % 2 == 0),
+                "is_timely": (idx % 5 != 0),
             }
         )
 

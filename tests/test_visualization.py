@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import matplotlib
 import pandas as pd
 
 from data_intelligence_platform.visualization.charts import (
@@ -8,6 +9,10 @@ from data_intelligence_platform.visualization.charts import (
     plot_product_timeliness,
     plot_product_year_heatmap,
 )
+
+
+def test_visualization_backend_is_headless() -> None:
+    assert matplotlib.get_backend().lower() == "agg"
 
 
 def test_issue_hotspot_plot_accepts_categorical_dimensions(
@@ -35,10 +40,7 @@ def test_issue_hotspot_plot_accepts_categorical_dimensions(
         }
     )
 
-    output_path = (
-        tmp_path
-        / "issue_hotspots.png"
-    )
+    output_path = tmp_path / "issue_hotspots.png"
 
     plot_issue_hotspots(
         hotspots,
@@ -48,10 +50,7 @@ def test_issue_hotspot_plot_accepts_categorical_dimensions(
 
     assert output_path.exists()
 
-    assert (
-        output_path.stat().st_size
-        > 0
-    )
+    assert output_path.stat().st_size > 0
 
 
 def test_heatmap_accepts_arrow_backed_numeric_values(
@@ -95,10 +94,7 @@ def test_heatmap_accepts_arrow_backed_numeric_values(
         ],
     )
 
-    output_path = (
-        tmp_path
-        / "product_year_heatmap.png"
-    )
+    output_path = tmp_path / "product_year_heatmap.png"
 
     plot_product_year_heatmap(
         matrix,
@@ -107,10 +103,7 @@ def test_heatmap_accepts_arrow_backed_numeric_values(
 
     assert output_path.exists()
 
-    assert (
-        output_path.stat().st_size
-        > 0
-    )
+    assert output_path.stat().st_size > 0
 
 
 def test_top_product_plot_data_limits_unused_categories():
@@ -168,40 +161,16 @@ def test_top_product_plot_data_limits_unused_categories():
         ascending=False,
     )
 
-    assert len(
-        top
-    ) == 10
+    assert len(top) == 10
 
-    assert (
-        top[
-            "product"
-        ]
-        .nunique()
-        == 10
-    )
+    assert top["product"].nunique() == 10
 
-    assert (
-        "Product 11"
-        not in set(
-            top[
-                "product"
-            ]
-        )
-    )
+    assert "Product 11" not in set(top["product"])
 
-    assert (
-        "Unused category"
-        not in set(
-            top[
-                "product"
-            ]
-        )
-    )
+    assert "Unused category" not in set(top["product"])
 
     assert not isinstance(
-        top[
-            "product"
-        ].dtype,
+        top["product"].dtype,
         pd.CategoricalDtype,
     )
 
@@ -256,10 +225,7 @@ def test_timeliness_plot_accepts_categorical_products(
         }
     )
 
-    output_path = (
-        tmp_path
-        / "timeliness.png"
-    )
+    output_path = tmp_path / "timeliness.png"
 
     plot_product_timeliness(
         product,
@@ -269,7 +235,4 @@ def test_timeliness_plot_accepts_categorical_products(
 
     assert output_path.exists()
 
-    assert (
-        output_path.stat().st_size
-        > 0
-    )
+    assert output_path.stat().st_size > 0

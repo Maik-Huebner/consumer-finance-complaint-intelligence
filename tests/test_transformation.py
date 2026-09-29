@@ -20,76 +20,55 @@ def test_transform_filters_analysis_window_and_derives_fields(
 
     assert result.height == 3
 
-    assert result[
-        "complaint_id"
-    ].to_list() == [
+    assert result["complaint_id"].to_list() == [
         "1",
         "2",
         "3",
     ]
 
-    assert result[
-        "year"
-    ].to_list() == [
+    assert result["year"].to_list() == [
         2022,
         2023,
         2025,
     ]
 
-    assert result[
-        "days_to_company"
-    ].to_list() == [
+    assert result["days_to_company"].to_list() == [
         1,
         2,
         0,
     ]
 
-    assert result[
-        "has_narrative"
-    ].to_list() == [
+    assert result["has_narrative"].to_list() == [
         True,
         False,
         True,
     ]
 
-    assert result[
-        "is_timely"
-    ].to_list() == [
+    assert result["is_timely"].to_list() == [
         True,
         False,
         True,
     ]
 
-    assert result[
-        "taxonomy_version"
-    ].to_list() == [
+    assert result["taxonomy_version"].to_list() == [
         "pre_aug_2023",
         "pre_aug_2023",
         "aug_2023_or_later",
     ]
 
-    assert result[
-        "harmonized_product"
-    ].to_list() == [
+    assert result["harmonized_product"].to_list() == [
         "Credit card",
         "Mortgage",
         "Credit card",
     ]
 
-    assert result[
-        "harmonized_issue"
-    ].to_list() == [
+    assert result["harmonized_issue"].to_list() == [
         "Billing dispute",
         "Trouble during payment process",
         "Billing dispute",
     ]
 
-    assert (
-        result.schema[
-            "date_received"
-        ]
-        == pl.Date
-    )
+    assert result.schema["date_received"] == pl.Date
 
 
 def test_transform_harmonizes_documented_2023_taxonomy_changes(
@@ -99,13 +78,11 @@ def test_transform_harmonizes_documented_2023_taxonomy_changes(
         {
             "Date received": "2022-01-10",
             "Product": (
-                "Credit reporting, credit repair services, "
-                "or other personal consumer reports"
+                "Credit reporting, credit repair services, or other personal consumer reports"
             ),
             "Sub-product": "Credit reporting",
             "Issue": (
-                "Problem with a credit reporting company's "
-                "investigation into an existing problem"
+                "Problem with a credit reporting company's investigation into an existing problem"
             ),
             "Consumer complaint narrative": None,
             "Company": "Example Company",
@@ -119,8 +96,7 @@ def test_transform_harmonizes_documented_2023_taxonomy_changes(
         {
             "Date received": "2022-02-10",
             "Product": (
-                "Credit reporting, credit repair services, "
-                "or other personal consumer reports"
+                "Credit reporting, credit repair services, or other personal consumer reports"
             ),
             "Sub-product": "Credit repair services",
             "Issue": "Fraud or scam",
@@ -135,9 +111,7 @@ def test_transform_harmonizes_documented_2023_taxonomy_changes(
         },
         {
             "Date received": "2022-03-10",
-            "Product": (
-                "Money transfer, virtual currency, or money service"
-            ),
+            "Product": ("Money transfer, virtual currency, or money service"),
             "Sub-product": "Debt settlement",
             "Issue": "Unexpected or other fees",
             "Consumer complaint narrative": None,
@@ -193,14 +167,9 @@ def test_transform_harmonizes_documented_2023_taxonomy_changes(
         },
         {
             "Date received": "2024-01-10",
-            "Product": (
-                "Credit reporting or other personal consumer reports"
-            ),
+            "Product": ("Credit reporting or other personal consumer reports"),
             "Sub-product": "Credit reporting",
-            "Issue": (
-                "Problem with a company's investigation "
-                "into an existing problem"
-            ),
+            "Issue": ("Problem with a company's investigation into an existing problem"),
             "Consumer complaint narrative": None,
             "Company": "Example Company",
             "State": "NY",
@@ -226,16 +195,9 @@ def test_transform_harmonizes_documented_2023_taxonomy_changes(
         },
     ]
 
-    csv_path = (
-        tmp_path
-        / "taxonomy_cases.csv"
-    )
+    csv_path = tmp_path / "taxonomy_cases.csv"
 
-    pl.DataFrame(
-        rows
-    ).write_csv(
-        csv_path
-    )
+    pl.DataFrame(rows).write_csv(csv_path)
 
     result = build_lazy_transform(
         csv_path,
@@ -243,139 +205,41 @@ def test_transform_harmonizes_documented_2023_taxonomy_changes(
         analysis_end="2025-12-31",
     ).collect()
 
-    by_id = {
-        row[
-            "complaint_id"
-        ]: row
-        for row
-        in result.to_dicts()
-    }
+    by_id = {row["complaint_id"]: row for row in result.to_dicts()}
 
-    assert (
-        by_id[
-            "100"
-        ][
-            "harmonized_product"
-        ]
-        == (
-            "Credit reporting or other personal consumer reports"
-        )
+    assert by_id["100"]["harmonized_product"] == (
+        "Credit reporting or other personal consumer reports"
     )
 
-    assert (
-        by_id[
-            "100"
-        ][
-            "harmonized_issue"
-        ]
-        == (
-            "Problem with a company's investigation "
-            "into an existing problem"
-        )
+    assert by_id["100"]["harmonized_issue"] == (
+        "Problem with a company's investigation into an existing problem"
     )
 
-    assert (
-        by_id[
-            "101"
-        ][
-            "harmonized_product"
-        ]
-        == "Debt or credit management"
+    assert by_id["101"]["harmonized_product"] == "Debt or credit management"
+
+    assert by_id["101"]["harmonized_issue"] == "Didn't provide services promised"
+
+    assert by_id["102"]["harmonized_product"] == "Debt or credit management"
+
+    assert by_id["102"]["harmonized_issue"] == "Charged up-front or unexpected fees"
+
+    assert by_id["103"]["harmonized_product"] == "Prepaid card"
+
+    assert by_id["104"]["harmonized_product"] == "Credit card"
+
+    assert by_id["105"]["harmonized_product"] == (
+        "Payday loan, title loan, personal loan, or advance loan"
     )
 
-    assert (
-        by_id[
-            "101"
-        ][
-            "harmonized_issue"
-        ]
-        == "Didn't provide services promised"
+    assert by_id["106"]["harmonized_product"] == (
+        "Credit reporting or other personal consumer reports"
     )
 
-    assert (
-        by_id[
-            "102"
-        ][
-            "harmonized_product"
-        ]
-        == "Debt or credit management"
-    )
-
-    assert (
-        by_id[
-            "102"
-        ][
-            "harmonized_issue"
-        ]
-        == "Charged up-front or unexpected fees"
-    )
-
-    assert (
-        by_id[
-            "103"
-        ][
-            "harmonized_product"
-        ]
-        == "Prepaid card"
-    )
-
-    assert (
-        by_id[
-            "104"
-        ][
-            "harmonized_product"
-        ]
-        == "Credit card"
-    )
-
-    assert (
-        by_id[
-            "105"
-        ][
-            "harmonized_product"
-        ]
-        == (
-            "Payday loan, title loan, personal loan, or advance loan"
-        )
-    )
-
-    assert (
-        by_id[
-            "106"
-        ][
-            "harmonized_product"
-        ]
-        == (
-            "Credit reporting or other personal consumer reports"
-        )
-    )
-
-    assert (
-        by_id[
-            "106"
-        ][
-            "taxonomy_version"
-        ]
-        == "aug_2023_or_later"
-    )
+    assert by_id["106"]["taxonomy_version"] == "aug_2023_or_later"
 
     # Missing source information must remain missing in the source field.
-    assert (
-        by_id[
-            "107"
-        ][
-            "issue"
-        ]
-        is None
-    )
+    assert by_id["107"]["issue"] is None
 
     # The analytical field explicitly represents the missing value so the
     # complaint remains visible in group-based exploratory analysis.
-    assert (
-        by_id[
-            "107"
-        ][
-            "harmonized_issue"
-        ]
-        == "Issue not provided"
-    )
+    assert by_id["107"]["harmonized_issue"] == "Issue not provided"

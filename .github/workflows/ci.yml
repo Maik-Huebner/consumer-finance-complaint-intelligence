@@ -12,9 +12,11 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        python-version:
-          - "3.11"
-          - "3.13"
+        include:
+          - python-version: "3.11"
+            lock-file: requirements/lock-py311.txt
+          - python-version: "3.13"
+            lock-file: requirements/lock-py313.txt
 
     steps:
       - name: Repository auschecken
@@ -25,14 +27,24 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
           cache: pip
+          cache-dependency-path: ${{ matrix.lock-file }}
 
-      - name: Projekt installieren
+      - name: Exakte Abhängigkeiten und Paket installieren
         run: |
           python -m pip install --upgrade pip
-          pip install -e ".[dev]"
+          python -m pip install --only-binary=:all: -r ${{ matrix.lock-file }}
+          python -m pip install --no-deps --no-build-isolation .
 
-      - name: Ruff ausführen
-        run: ruff check .
+      - name: Reguläre Installation verifizieren
+        run: |
+          python -c "from pathlib import Path; import data_intelligence_platform as p; assert 'site-packages' in str(Path(p.__file__).resolve()); print(Path(p.__file__).resolve())"
+          python -m pip check
 
-      - name: Tests mit Warnungen als Fehler ausführen
-        run: pytest -q -W error
+      - name: Quality Gate
+        run: make quality PYTHON=python LOCK_FILE=${{ matrix.lock-file }}
+
+      - name: Paket bauen
+        run: make build PYTHON=python
+
+      - name: Wheel-Smoke in isolierter Umgebung
+        run: python scripts/wheel_smoke.py

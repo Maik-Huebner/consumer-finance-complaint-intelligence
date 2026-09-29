@@ -58,26 +58,16 @@ def validate_dataframe(
     df: pd.DataFrame,
 ) -> QualityReport:
     """Run structural and consistency checks without mutating the data."""
-    missing_columns = (
-        REQUIRED_COLUMNS
-        - set(df.columns)
-    )
+    missing_columns = REQUIRED_COLUMNS - set(df.columns)
 
     if missing_columns:
-        raise ValueError(
-            "Processed data missing required columns: "
-            f"{sorted(missing_columns)}"
-        )
+        raise ValueError(f"Processed data missing required columns: {sorted(missing_columns)}")
 
     timely_values = sorted(
         value
-        for value in (
-            df["timely_response"]
-            .dropna()
-            .astype(str)
-            .unique()
-        )
-        if value not in {
+        for value in (df["timely_response"].dropna().astype(str).unique())
+        if value
+        not in {
             "Yes",
             "No",
         }
@@ -85,56 +75,21 @@ def validate_dataframe(
 
     taxonomy_versions = sorted(
         value
-        for value in (
-            df["taxonomy_version"]
-            .dropna()
-            .astype(str)
-            .unique()
-        )
-        if value
-        not in EXPECTED_TAXONOMY_VERSIONS
+        for value in (df["taxonomy_version"].dropna().astype(str).unique())
+        if value not in EXPECTED_TAXONOMY_VERSIONS
     )
 
-    duplicate_ids = int(
-        df["complaint_id"]
-        .duplicated()
-        .sum()
-    )
+    duplicate_ids = int(df["complaint_id"].duplicated().sum())
 
-    missing_ids = int(
-        df["complaint_id"]
-        .isna()
-        .sum()
-    )
+    missing_ids = int(df["complaint_id"].isna().sum())
 
-    missing_harmonized_products = int(
-        df["harmonized_product"]
-        .isna()
-        .sum()
-    )
+    missing_harmonized_products = int(df["harmonized_product"].isna().sum())
 
-    missing_harmonized_issues = int(
-        df["harmonized_issue"]
-        .isna()
-        .sum()
-    )
+    missing_harmonized_issues = int(df["harmonized_issue"].isna().sum())
 
-    negative_delays = int(
-        (
-            df["days_to_company"]
-            .dropna()
-            < 0
-        )
-        .sum()
-    )
+    negative_delays = int((df["days_to_company"].dropna() < 0).sum())
 
-    missing_percent = (
-        df.isna()
-        .mean()
-        .mul(100)
-        .round(3)
-        .to_dict()
-    )
+    missing_percent = df.isna().mean().mul(100).round(3).to_dict()
 
     dates = pd.to_datetime(
         df["date_received"],
@@ -143,21 +98,9 @@ def validate_dataframe(
 
     valid_dates = dates.dropna()
 
-    min_date = (
-        None
-        if valid_dates.empty
-        else valid_dates.min()
-        .date()
-        .isoformat()
-    )
+    min_date = None if valid_dates.empty else valid_dates.min().date().isoformat()
 
-    max_date = (
-        None
-        if valid_dates.empty
-        else valid_dates.max()
-        .date()
-        .isoformat()
-    )
+    max_date = None if valid_dates.empty else valid_dates.max().date().isoformat()
 
     passed = (
         duplicate_ids == 0

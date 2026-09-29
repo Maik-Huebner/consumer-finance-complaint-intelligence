@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import argparse
+from pathlib import Path
 
 from data_intelligence_platform.ingestion.download import (
     download_file,
@@ -16,16 +17,21 @@ from data_intelligence_platform.utils.paths import (
     resolve_project_path,
 )
 
+REPO_ROOT = Path(__file__).resolve().parents[1]
+CONFIG_PATH = REPO_ROOT / "configs" / "project.yaml"
+
 
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--force", action="store_true", help="Replace an existing local raw snapshot.")
+    parser.add_argument(
+        "--force", action="store_true", help="Replace an existing local raw snapshot."
+    )
     args = parser.parse_args()
 
-    config = load_config()
-    ensure_project_directories(config)
+    config = load_config(CONFIG_PATH)
+    ensure_project_directories(config, project_root=REPO_ROOT)
     data = config["data"]
-    raw_dir = resolve_project_path(data["raw_dir"])
+    raw_dir = resolve_project_path(data["raw_dir"], project_root=REPO_ROOT)
     zip_path = raw_dir / data["zip_filename"]
 
     print(f"Downloading CFPB data to {zip_path} ...")

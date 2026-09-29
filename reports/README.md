@@ -735,11 +735,18 @@ Die aktuelle Implementierung wird durch automatisierte Tests abgesichert.
 Aktueller Stand:
 
 ```text
-24 Tests gesammelt
-24 bestanden
-24 bestanden mit -W error
+35 Tests gesammelt
+35 bestanden
+35 bestanden mit -W error
 Ruff: All checks passed
+Ruff format --check: bestanden
 ```
+
+`python scripts/validate_reports.py` prüft die versionierten Tabellen und
+JSON-Artefakte unabhängig von lokalen Rohdaten gegeneinander. Der Validator
+deckt Provenienz, Zeitfenster, Summen, gewichtete Raten, rollierende Werte,
+Trend, Korrelationen, Segment-Sensitivität, Taxonomie-Audit und zentrale
+veröffentlichte Narrative ab.
 
 Getestet werden unter anderem:
 

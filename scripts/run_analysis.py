@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import json
+from pathlib import Path
 
 import pandas as pd
 
@@ -75,56 +76,35 @@ CATEGORICAL_COLUMNS = [
     "timely_response",
 ]
 
+REPO_ROOT = Path(__file__).resolve().parents[1]
+CONFIG_PATH = REPO_ROOT / "configs" / "project.yaml"
+
 
 def main() -> None:
     """Execute the complete exploratory analysis workflow."""
-    config = load_config()
+    config = load_config(CONFIG_PATH)
 
-    ensure_project_directories(
-        config
-    )
+    ensure_project_directories(config, project_root=REPO_ROOT)
 
-    project = config[
-        "project"
-    ]
+    project = config["project"]
 
-    data = config[
-        "data"
-    ]
+    data = config["data"]
 
     processed_path = (
-        resolve_project_path(
-            data[
-                "processed_dir"
-            ]
-        )
-        / data[
-            "processed_filename"
-        ]
+        resolve_project_path(data["processed_dir"], project_root=REPO_ROOT)
+        / data["processed_filename"]
     )
 
     if not processed_path.exists():
         raise FileNotFoundError(
-            "Processed data not found: "
-            f"{processed_path}. "
-            "Run scripts/run_pipeline.py first."
+            f"Processed data not found: {processed_path}. Run scripts/run_pipeline.py first."
         )
 
-    reports_dir = resolve_project_path(
-        data[
-            "reports_dir"
-        ]
-    )
+    reports_dir = resolve_project_path(data["reports_dir"], project_root=REPO_ROOT)
 
-    figures_dir = resolve_project_path(
-        data[
-            "figures_dir"
-        ]
-    )
+    figures_dir = resolve_project_path(data["figures_dir"], project_root=REPO_ROOT)
 
-    print(
-        "Loading analysis columns from processed Parquet ..."
-    )
+    print("Loading analysis columns from processed Parquet ...")
 
     df = pd.read_parquet(
         processed_path,
@@ -133,43 +113,14 @@ def main() -> None:
         dtype_backend="pyarrow",
     )
 
-    df[
-        "date_received"
-    ] = pd.to_datetime(
-        df[
-            "date_received"
-        ]
-    )
+    df["date_received"] = pd.to_datetime(df["date_received"])
 
-    df[
-        "date_sent_to_company"
-    ] = pd.to_datetime(
-        df[
-            "date_sent_to_company"
-        ]
-    )
+    df["date_sent_to_company"] = pd.to_datetime(df["date_sent_to_company"])
 
-    df[
-        "year_month"
-    ] = pd.to_datetime(
-        df[
-            "year_month"
-        ]
-    )
+    df["year_month"] = pd.to_datetime(df["year_month"])
 
-    for column in (
-        CATEGORICAL_COLUMNS
-    ):
-        df[
-            column
-        ] = (
-            df[
-                column
-            ]
-            .astype(
-                "category"
-            )
-        )
+    for column in CATEGORICAL_COLUMNS:
+        df[column] = df[column].astype("category")
 
     memory_mb = (
         df.memory_usage(
@@ -179,24 +130,13 @@ def main() -> None:
         / 1024**2
     )
 
-    print(
-        f"Loaded {len(df):,} complaints "
-        f"using approximately "
-        f"{memory_mb:,.1f} MiB."
-    )
+    print(f"Loaded {len(df):,} complaints using approximately {memory_mb:,.1f} MiB.")
 
-    print(
-        "Running data-quality validation ..."
-    )
+    print("Running data-quality validation ...")
 
-    quality = validate_dataframe(
-        df
-    )
+    quality = validate_dataframe(df)
 
-    (
-        reports_dir
-        / "data_quality_report.json"
-    ).write_text(
+    (reports_dir / "data_quality_report.json").write_text(
         json.dumps(
             quality.to_dict(),
             indent=2,
@@ -204,26 +144,15 @@ def main() -> None:
         encoding="utf-8",
     )
 
-    print(
-        "Calculating data-cleaning and taxonomy audits ..."
-    )
+    print("Calculating data-cleaning and taxonomy audits ...")
 
-    cleaning = data_cleaning_summary(
-        df
-    )
+    cleaning = data_cleaning_summary(df)
 
-    taxonomy = taxonomy_harmonization_summary(
-        df
-    )
+    taxonomy = taxonomy_harmonization_summary(df)
 
-    taxonomy_mapping = taxonomy_audit(
-        df
-    )
+    taxonomy_mapping = taxonomy_audit(df)
 
-    (
-        reports_dir
-        / "data_cleaning_summary.json"
-    ).write_text(
+    (reports_dir / "data_cleaning_summary.json").write_text(
         json.dumps(
             cleaning,
             indent=2,
@@ -231,10 +160,7 @@ def main() -> None:
         encoding="utf-8",
     )
 
-    (
-        reports_dir
-        / "taxonomy_harmonization_summary.json"
-    ).write_text(
+    (reports_dir / "taxonomy_harmonization_summary.json").write_text(
         json.dumps(
             taxonomy,
             indent=2,
@@ -243,63 +169,40 @@ def main() -> None:
     )
 
     taxonomy_mapping.to_csv(
-        reports_dir
-        / "taxonomy_harmonization_audit.csv",
+        reports_dir / "taxonomy_harmonization_audit.csv",
         index=False,
     )
 
-    print(
-        "Calculating business and EDA metrics ..."
-    )
+    print("Calculating business and EDA metrics ...")
 
-    kpis = executive_kpis(
-        df
-    )
+    kpis = executive_kpis(df)
 
-    yearly = yearly_summary(
-        df
-    )
+    yearly = yearly_summary(df)
 
     monthly = monthly_summary(
         df,
-        project[
-            "rolling_window_months"
-        ],
+        project["rolling_window_months"],
     )
 
-    product = product_summary(
-        df
-    )
+    product = product_summary(df)
 
-    hotspots = issue_hotspots(
-        df
-    )
+    hotspots = issue_hotspots(df)
 
     companies = company_timeliness(
         df,
-        project[
-            "minimum_company_complaints"
-        ],
+        project["minimum_company_complaints"],
     )
 
-    correlations = monthly_correlations(
-        monthly
-    )
+    correlations = monthly_correlations(monthly)
 
-    trend = linear_time_trend(
-        monthly
-    )
+    trend = linear_time_trend(monthly)
 
     matrix = product_year_matrix(
         df,
-        project[
-            "top_n_products"
-        ],
+        project["top_n_products"],
     )
 
-    print(
-        "Calculating segment sensitivity analysis ..."
-    )
+    print("Calculating segment sensitivity analysis ...")
 
     sensitivity_yearly = segment_yearly_summary(
         df,
@@ -313,56 +216,44 @@ def main() -> None:
         focus_product=DOMINANT_PRODUCT,
     )
 
-    print(
-        "Writing analytical tables ..."
-    )
+    print("Writing analytical tables ...")
 
     kpis.to_csv(
-        reports_dir
-        / "kpi_summary.csv",
+        reports_dir / "kpi_summary.csv",
         index=False,
     )
 
     yearly.to_csv(
-        reports_dir
-        / "yearly_summary.csv",
+        reports_dir / "yearly_summary.csv",
         index=False,
     )
 
     monthly.to_csv(
-        reports_dir
-        / "monthly_trends.csv",
+        reports_dir / "monthly_trends.csv",
         index=False,
     )
 
     product.to_csv(
-        reports_dir
-        / "product_summary.csv",
+        reports_dir / "product_summary.csv",
         index=False,
     )
 
     hotspots.to_csv(
-        reports_dir
-        / "issue_hotspots.csv",
+        reports_dir / "issue_hotspots.csv",
         index=False,
     )
 
     companies.to_csv(
-        reports_dir
-        / "company_timeliness.csv",
+        reports_dir / "company_timeliness.csv",
         index=False,
     )
 
     correlations.to_csv(
-        reports_dir
-        / "monthly_correlations.csv",
+        reports_dir / "monthly_correlations.csv",
         index=False,
     )
 
-    (
-        reports_dir
-        / "linear_trend.json"
-    ).write_text(
+    (reports_dir / "linear_trend.json").write_text(
         json.dumps(
             trend,
             indent=2,
@@ -371,15 +262,11 @@ def main() -> None:
     )
 
     sensitivity_yearly.to_csv(
-        reports_dir
-        / "segment_sensitivity_yearly.csv",
+        reports_dir / "segment_sensitivity_yearly.csv",
         index=False,
     )
 
-    (
-        reports_dir
-        / "segment_sensitivity_summary.json"
-    ).write_text(
+    (reports_dir / "segment_sensitivity_summary.json").write_text(
         json.dumps(
             sensitivity,
             indent=2,
@@ -387,74 +274,54 @@ def main() -> None:
         encoding="utf-8",
     )
 
-    print(
-        "Creating static figures and interactive dashboard ..."
-    )
+    print("Creating static figures and interactive dashboard ...")
 
     plot_monthly_trend(
         monthly,
-        figures_dir
-        / "01_monthly_complaints.png",
+        figures_dir / "01_monthly_complaints.png",
     )
 
     plot_product_mix(
         product,
-        figures_dir
-        / "02_product_mix.png",
-        project[
-            "top_n_products"
-        ],
+        figures_dir / "02_product_mix.png",
+        project["top_n_products"],
     )
 
     plot_product_timeliness(
         product,
-        figures_dir
-        / "03_timely_response_by_product.png",
-        project[
-            "top_n_products"
-        ],
+        figures_dir / "03_timely_response_by_product.png",
+        project["top_n_products"],
     )
 
     plot_issue_hotspots(
         hotspots,
-        figures_dir
-        / "04_issue_hotspots.png",
-        project[
-            "top_n_issues"
-        ],
+        figures_dir / "04_issue_hotspots.png",
+        project["top_n_issues"],
     )
 
     plot_product_year_heatmap(
         matrix,
-        figures_dir
-        / "05_product_year_heatmap.png",
+        figures_dir / "05_product_year_heatmap.png",
     )
 
     plot_segment_sensitivity(
         sensitivity_yearly,
-        figures_dir
-        / "06_credit_reporting_sensitivity.png",
+        figures_dir / "06_credit_reporting_sensitivity.png",
         focus_label="Credit Reporting",
     )
 
     write_interactive_dashboard(
         monthly,
         product,
-        reports_dir
-        / "interactive_dashboard.html",
+        reports_dir / "interactive_dashboard.html",
         sensitivity_yearly=sensitivity_yearly,
         focus_label="Credit Reporting",
     )
 
-    print(
-        "Writing executive summary ..."
-    )
+    print("Writing executive summary ...")
 
     write_executive_summary(
-        output_path=(
-            reports_dir
-            / "executive_summary.md"
-        ),
+        output_path=(reports_dir / "executive_summary.md"),
         yearly=yearly,
         product=product,
         hotspots=hotspots,
@@ -466,16 +333,10 @@ def main() -> None:
         sensitivity=sensitivity,
     )
 
-    print(
-        "Analysis complete. "
-        f"Reports written to {reports_dir}"
-    )
+    print(f"Analysis complete. Reports written to {reports_dir}")
 
     if not quality.passed:
-        print(
-            "WARNING: Data-quality checks reported findings. "
-            "Review data_quality_report.json."
-        )
+        print("WARNING: Data-quality checks reported findings. Review data_quality_report.json.")
 
 
 if __name__ == "__main__":

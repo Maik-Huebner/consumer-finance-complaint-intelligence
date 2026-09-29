@@ -7,9 +7,12 @@ __pycache__/
 .mypy_cache/
 .coverage
 htmlcov/
+build/
+dist/
 
 # Virtual environments and local environment files
 .venv/
+.wheel-venv/
 venv/
 .env
 .env.*

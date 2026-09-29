@@ -8,35 +8,15 @@ from data_intelligence_platform.validation.quality import (
 def test_quality_report_passes_for_valid_analytical_data(
     analytical_df,
 ):
-    report = validate_dataframe(
-        analytical_df
-    )
+    report = validate_dataframe(analytical_df)
 
     assert report.passed is True
-    assert (
-        report.duplicate_complaint_ids
-        == 0
-    )
-    assert (
-        report.negative_days_to_company
-        == 0
-    )
-    assert (
-        report.missing_harmonized_products
-        == 0
-    )
-    assert (
-        report.missing_harmonized_issues
-        == 0
-    )
-    assert (
-        report.unexpected_timely_values
-        == []
-    )
-    assert (
-        report.unexpected_taxonomy_versions
-        == []
-    )
+    assert report.duplicate_complaint_ids == 0
+    assert report.negative_days_to_company == 0
+    assert report.missing_harmonized_products == 0
+    assert report.missing_harmonized_issues == 0
+    assert report.unexpected_timely_values == []
+    assert report.unexpected_taxonomy_versions == []
 
 
 def test_quality_report_detects_duplicate_id(
@@ -50,15 +30,10 @@ def test_quality_report_detects_duplicate_id(
         "complaint_id",
     ]
 
-    report = validate_dataframe(
-        analytical_df
-    )
+    report = validate_dataframe(analytical_df)
 
     assert report.passed is False
-    assert (
-        report.duplicate_complaint_ids
-        == 1
-    )
+    assert report.duplicate_complaint_ids == 1
 
 
 def test_quality_report_detects_missing_harmonized_product(
@@ -69,12 +44,7 @@ def test_quality_report_detects_missing_harmonized_product(
         "harmonized_product",
     ] = None
 
-    report = validate_dataframe(
-        analytical_df
-    )
+    report = validate_dataframe(analytical_df)
 
     assert report.passed is False
-    assert (
-        report.missing_harmonized_products
-        == 1
-    )
+    assert report.missing_harmonized_products == 1

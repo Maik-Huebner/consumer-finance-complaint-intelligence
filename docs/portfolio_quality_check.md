@@ -242,10 +242,11 @@ Die Quelldaten selbst werden für Darstellungszwecke nicht verändert.
 Aktueller lokaler Qualitätsstand:
 
 ```text
-24 Tests
-24 bestanden
-24 bestanden mit -W error
+35 Tests
+35 bestanden
+35 bestanden mit -W error
 Ruff: All checks passed
+Ruff format --check: bestanden
 ```
 
 GitHub Actions validiert das Projekt zusätzlich auf:
@@ -255,7 +256,9 @@ Python 3.11
 Python 3.13
 ```
 
-Beide CI-Jobs sind erfolgreich.
+Der veröffentlichte v1.0.0-Stand bestand beide CI-Jobs. Änderungen nach diesem
+Tag müssen denselben Matrixlauf erneut bestehen, bevor ein Patch-Release
+veröffentlicht wird.
 
 ## Reproduzierbarkeit
 

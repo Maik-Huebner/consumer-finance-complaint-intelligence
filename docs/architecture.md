@@ -802,7 +802,7 @@ tests/
 Der aktuelle Stand umfasst:
 
 ```text
-24 automatisierte Tests
+35 automatisierte Tests
 ```
 
 Abgedeckt werden unter anderem:
@@ -822,11 +822,17 @@ Abgedeckt werden unter anderem:
 - Categorical-Datentypen,
 - PyArrow-basierte numerische Werte,
 - Top-N-Auswahl ohne unbenutzte Kategorien.
+- Package-/Distribution-Versionsdrift,
+- explizite Repository-Pfade bei regulärer Installation,
+- Lock- und CI-Vertrag,
+- versionierte Report-/Provenienz-Konsistenz,
+- Repository-Hygiene,
+- output-clean Notebook-Ausführung.
 
-Normales Gate:
+Vollständiges Gate:
 
 ```bash
-pytest -q
+make quality
 ```
 
 Strenger Warning-Test:
@@ -835,17 +841,22 @@ Strenger Warning-Test:
 pytest -q -W error
 ```
 
-Codequalität:
+Codequalität und Format:
 
 ```bash
 ruff check .
+ruff format --check .
 ```
+
+CI installiert zuerst den gemeinsamen exakten Lock und danach das Paket regulär
+mit `--no-deps`. Dadurch hängen Tests und Repository-Skripte weder von einer
+editable Installation noch von der Position des installierten Packages ab.
 
 Aktueller Status:
 
 ```text
-24 passed
-24 passed mit -W error
+35 passed
+35 passed mit -W error
 Ruff: All checks passed
 ```
 

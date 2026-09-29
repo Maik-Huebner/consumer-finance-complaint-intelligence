@@ -96,10 +96,7 @@ def test_executive_summary_documents_cleaning_and_taxonomy(
         "r2": 0.8,
     }
 
-    output_path = (
-        tmp_path
-        / "executive_summary.md"
-    )
+    output_path = tmp_path / "executive_summary.md"
 
     write_executive_summary(
         output_path=output_path,
@@ -113,66 +110,28 @@ def test_executive_summary_documents_cleaning_and_taxonomy(
         quality_passed=True,
     )
 
-    text = output_path.read_text(
-        encoding="utf-8"
-    )
+    text = output_path.read_text(encoding="utf-8")
 
-    assert (
-        "# Management Summary"
-        in text
-    )
+    assert "# Management Summary" in text
 
-    assert (
-        "## Datenaufbereitung und Datenbereinigung"
-        in text
-    )
+    assert "## Datenaufbereitung und Datenbereinigung" in text
 
-    assert (
-        "Issue not provided"
-        in text
-    )
+    assert "Issue not provided" in text
 
-    assert (
-        "Keine Beschwerde wird ausschließlich"
-        in text
-    )
+    assert "Keine Beschwerde wird ausschließlich" in text
 
-    assert (
-        "## Taxonomie-Harmonisierung"
-        in text
-    )
+    assert "## Taxonomie-Harmonisierung" in text
 
-    assert (
-        "## Relevanz für Banking und Finanzdienstleistungen"
-        in text
-    )
+    assert "## Relevanz für Banking und Finanzdienstleistungen" in text
 
-    assert (
-        "## Relevanz für Versicherungen"
-        in text
-    )
+    assert "## Relevanz für Versicherungen" in text
 
-    assert (
-        "## Relevanz für Technical AI Consulting"
-        in text
-    )
+    assert "## Relevanz für Technical AI Consulting" in text
 
-    assert (
-        "Conduct-Risk"
-        in text
-    )
+    assert "Conduct-Risk" in text
 
-    assert (
-        "Datenqualitätsprüfung wurde **bestanden**"
-        in text
-    )
+    assert "Datenqualitätsprüfung wurde **bestanden**" in text
 
-    assert (
-        "keine kausalen Zusammenhänge"
-        in text
-    )
+    assert "keine kausalen Zusammenhänge" in text
 
-    assert (
-        "datenbasierten Entscheidungsunterstützung"
-        in text
-    )
+    assert "datenbasierten Entscheidungsunterstützung" in text

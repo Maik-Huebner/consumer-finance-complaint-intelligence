@@ -18,7 +18,7 @@ Das Projekt zeigt einen vollständigen analytischen Workflow für Financial Serv
 | Timely-Response-Rate | **99,6 %** |
 | Wachstum 2022 → 2025 | **+580,2 %** |
 | Credit-Reporting-Anteil 2025 | **88,4 %** |
-| Tests | **24/24 bestanden** |
+| Tests | **35/35 bestanden** |
 
 **Zentrale Erkenntnis:** Das Gesamtwachstum bleibt auch ohne Credit Reporting stark (+220,3 %), aber rund **91,2 % der Steigung des linearen Gesamttrends** entfallen rechnerisch auf den Credit-Reporting-Anteil der monatlichen Beschwerdereihe. Aggregierte Portfolio-KPIs werden dadurch erheblich vom Segmentmix geprägt.
 
@@ -171,8 +171,14 @@ consumer-finance-complaint-intelligence/
 python -m venv .venv
 source .venv/bin/activate
 python -m pip install --upgrade pip
-pip install -e ".[dev]"
+make install
 ```
+
+Die separaten Locks für Python 3.11 und 3.13 enthalten jeweils die vollständige
+Runtime-, Test-, Quality- und Build-Umgebung mit exakten Versionen. Das Makefile
+wählt den passenden Lock anhand des verwendeten Interpreters.
+Für lokale Entwicklung ist alternativ `make install-editable` verfügbar; CI und
+Release-Validierung installieren das Paket bewusst regulär und nicht editable.
 
 ### Daten herunterladen
 
@@ -198,12 +204,27 @@ python scripts/run_analysis.py
 make quality
 ```
 
+Das Quality Gate umfasst Ruff-Lint, `ruff format --check`, Tests mit Warnungen
+als Fehler, den leichten Repository-Audit, die Report-/Evidence-Prüfung und den
+Notebook-Smoke.
+
+### Offline reproduzierbare Evidence prüfen
+
+```bash
+make reproduce
+```
+
+Dieser Befehl prüft die kleinen versionierten Report-Snapshots und führt das
+output-clean Executive-Notebook aus. Dafür sind weder die 8,5-GB-Rohdaten noch
+das lokale Parquet erforderlich. Eine vollständige Neuberechnung aus den
+CFPB-Rohdaten bleibt über `make pipeline` verfügbar.
+
 Aktueller Stand:
 
 ```text
-24/24 Tests bestanden
+35/35 Tests bestanden
 pytest -W error: bestanden
-Ruff: All checks passed
+Ruff check + Ruff format --check: bestanden
 CI: Python 3.11 und 3.13
 ```
 
@@ -222,6 +243,10 @@ Wichtige Einstiegspunkte:
 - [`docs/data_dictionary.md`](docs/data_dictionary.md) - Datenwörterbuch
 - [`docs/limitations.md`](docs/limitations.md) - Responsible Interpretation
 - [`presentation/consumer_finance_complaint_intelligence_presentation.pdf`](presentation/consumer_finance_complaint_intelligence_presentation.pdf) - Abschlusspräsentation
+
+Das Notebook bleibt absichtlich ohne gespeicherte Ausgaben. `make notebook-check`
+führt seine acht Code-Zellen gegen die versionierten Reports aus und verändert
+die Datei nicht.
 
 ## Responsible Interpretation
 

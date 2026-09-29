@@ -19,39 +19,17 @@ sns.set_theme(
 )
 
 PRODUCT_DISPLAY_NAMES = {
-    "Credit reporting or other personal consumer reports": (
-        "Credit Reporting"
-    ),
-    "Debt collection": (
-        "Debt Collection"
-    ),
-    "Credit card": (
-        "Credit Card"
-    ),
-    "Checking or savings account": (
-        "Checking / Savings"
-    ),
-    "Money transfer, virtual currency, or money service": (
-        "Money Transfer / Virtual Currency"
-    ),
-    "Mortgage": (
-        "Mortgage"
-    ),
-    "Vehicle loan or lease": (
-        "Vehicle Loan / Lease"
-    ),
-    "Student loan": (
-        "Student Loan"
-    ),
-    "Payday loan, title loan, personal loan, or advance loan": (
-        "Payday / Title / Personal Loan"
-    ),
-    "Prepaid card": (
-        "Prepaid Card"
-    ),
-    "Debt or credit management": (
-        "Debt / Credit Management"
-    ),
+    "Credit reporting or other personal consumer reports": ("Credit Reporting"),
+    "Debt collection": ("Debt Collection"),
+    "Credit card": ("Credit Card"),
+    "Checking or savings account": ("Checking / Savings"),
+    "Money transfer, virtual currency, or money service": ("Money Transfer / Virtual Currency"),
+    "Mortgage": ("Mortgage"),
+    "Vehicle loan or lease": ("Vehicle Loan / Lease"),
+    "Student loan": ("Student Loan"),
+    "Payday loan, title loan, personal loan, or advance loan": ("Payday / Title / Personal Loan"),
+    "Prepaid card": ("Prepaid Card"),
+    "Debt or credit management": ("Debt / Credit Management"),
 }
 
 
@@ -71,21 +49,16 @@ def _save(
         bbox_inches="tight",
     )
 
-    plt.close(
-        fig
-    )
+    plt.close(fig)
 
 
 def _format_integer_de(
     value: float | int,
 ) -> str:
     """Format an integer value with German thousands separators."""
-    return (
-        f"{float(value):,.0f}"
-        .replace(
-            ",",
-            ".",
-        )
+    return f"{float(value):,.0f}".replace(
+        ",",
+        ".",
     )
 
 
@@ -94,57 +67,36 @@ def _format_compact_number_de(
     _position: object | None = None,
 ) -> str:
     """Format large chart-axis values without scientific notation."""
-    absolute = abs(
-        value
-    )
+    absolute = abs(value)
 
     if absolute >= 1_000_000:
         number = (
-            f"{value / 1_000_000:.1f}"
-            .replace(
+            f"{value / 1_000_000:.1f}".replace(
                 ".",
                 ",",
             )
-            .rstrip(
-                "0"
-            )
-            .rstrip(
-                ","
-            )
+            .rstrip("0")
+            .rstrip(",")
         )
 
-        return (
-            f"{number} Mio."
-        )
+        return f"{number} Mio."
 
     if absolute >= 1_000:
-        number = (
-            f"{value / 1_000:.0f}"
-        )
+        number = f"{value / 1_000:.0f}"
 
-        return (
-            f"{number} Tsd."
-        )
+        return f"{number} Tsd."
 
-    return _format_integer_de(
-        value
-    )
+    return _format_integer_de(value)
 
 
 def _display_product_name(
     value: object,
 ) -> str:
     """Return a concise chart-only label without changing source data."""
-    if pd.isna(
-        value
-    ):
-        return (
-            "Produkt nicht angegeben"
-        )
+    if pd.isna(value):
+        return "Produkt nicht angegeben"
 
-    text = str(
-        value
-    )
+    text = str(value)
 
     return PRODUCT_DISPLAY_NAMES.get(
         text,
@@ -165,47 +117,23 @@ def _prepare_top_product_rows(
             "complaints",
             ascending=False,
         )
-        .head(
-            top_n
-        )
+        .head(top_n)
         .copy()
     )
 
-    top[
-        "product"
-    ] = (
-        top[
-            "product"
-        ]
-        .astype(
-            "string"
-        )
-        .fillna(
-            "Produkt nicht angegeben"
-        )
-        .astype(
-            object
-        )
+    top["product"] = (
+        top["product"].astype("string").fillna("Produkt nicht angegeben").astype(object)
     )
 
-    top[
-        sort_by
-    ] = pd.to_numeric(
-        top[
-            sort_by
-        ],
+    top[sort_by] = pd.to_numeric(
+        top[sort_by],
         errors="coerce",
     )
 
-    return (
-        top.sort_values(
-            sort_by,
-            ascending=ascending,
-        )
-        .reset_index(
-            drop=True
-        )
-    )
+    return top.sort_values(
+        sort_by,
+        ascending=ascending,
+    ).reset_index(drop=True)
 
 
 def _weighted_portfolio_rate(
@@ -213,46 +141,21 @@ def _weighted_portfolio_rate(
 ) -> float:
     """Calculate the complaint-weighted portfolio timely-response rate."""
     complaints = pd.to_numeric(
-        product[
-            "complaints"
-        ],
+        product["complaints"],
         errors="coerce",
     )
 
     rates = pd.to_numeric(
-        product[
-            "timely_response_rate"
-        ],
+        product["timely_response_rate"],
         errors="coerce",
     )
 
-    valid = (
-        complaints.notna()
-        & rates.notna()
-        & (
-            complaints
-            > 0
-        )
-    )
+    valid = complaints.notna() & rates.notna() & (complaints > 0)
 
     if not valid.any():
-        return float(
-            "nan"
-        )
+        return float("nan")
 
-    return float(
-        (
-            complaints[
-                valid
-            ]
-            * rates[
-                valid
-            ]
-        ).sum()
-        / complaints[
-            valid
-        ].sum()
-    )
+    return float((complaints[valid] * rates[valid]).sum() / complaints[valid].sum())
 
 
 def plot_monthly_trend(
@@ -268,23 +171,15 @@ def plot_monthly_trend(
     )
 
     ax.plot(
-        monthly[
-            "year_month"
-        ],
-        monthly[
-            "complaints"
-        ],
+        monthly["year_month"],
+        monthly["complaints"],
         alpha=0.45,
         label="Monatliche Beschwerden",
     )
 
     ax.plot(
-        monthly[
-            "year_month"
-        ],
-        monthly[
-            "rolling_complaints"
-        ],
+        monthly["year_month"],
+        monthly["rolling_complaints"],
         linewidth=2.5,
         label="Rollierender 12-Monats-Durchschnitt",
     )
@@ -297,12 +192,8 @@ def plot_monthly_trend(
 
     if not monthly.empty:
         ax.set_xlim(
-            monthly[
-                "year_month"
-            ].min(),
-            monthly[
-                "year_month"
-            ].max(),
+            monthly["year_month"].min(),
+            monthly["year_month"].max(),
         )
 
     ax.xaxis.set_major_locator(
@@ -314,23 +205,13 @@ def plot_monthly_trend(
         )
     )
 
-    ax.xaxis.set_major_formatter(
-        DateFormatter(
-            "%Y-%m"
-        )
-    )
+    ax.xaxis.set_major_formatter(DateFormatter("%Y-%m"))
 
-    ax.yaxis.set_major_formatter(
-        FuncFormatter(
-            _format_compact_number_de
-        )
-    )
+    ax.yaxis.set_major_formatter(FuncFormatter(_format_compact_number_de))
 
     ax.legend()
 
-    sns.despine(
-        ax=ax
-    )
+    sns.despine(ax=ax)
 
     _save(
         fig,
@@ -358,9 +239,7 @@ def plot_product_mix(
         )
     )
 
-    order = top[
-        "product"
-    ].tolist()
+    order = top["product"].tolist()
 
     sns.barplot(
         data=top,
@@ -370,46 +249,27 @@ def plot_product_mix(
         ax=ax,
     )
 
-    maximum = float(
-        top[
-            "complaints"
-        ].max()
-    )
+    maximum = float(top["complaints"].max())
 
     for patch, value in zip(
         ax.patches,
-        top[
-            "complaints"
-        ],
+        top["complaints"],
         strict=True,
     ):
         ax.text(
-            float(
-                value
-            )
-            + maximum
-            * 0.012,
-            patch.get_y()
-            + patch.get_height()
-            / 2,
-            _format_integer_de(
-                value
-            ),
+            float(value) + maximum * 0.012,
+            patch.get_y() + patch.get_height() / 2,
+            _format_integer_de(value),
             va="center",
             fontsize=10,
         )
 
     ax.set_xlim(
         0,
-        maximum
-        * 1.14,
+        maximum * 1.14,
     )
 
-    ax.xaxis.set_major_formatter(
-        FuncFormatter(
-            _format_compact_number_de
-        )
-    )
+    ax.xaxis.set_major_formatter(FuncFormatter(_format_compact_number_de))
 
     ax.set(
         title=f"Top {len(top)} Finanzprodukte nach Beschwerdevolumen",
@@ -417,9 +277,7 @@ def plot_product_mix(
         ylabel="",
     )
 
-    sns.despine(
-        ax=ax
-    )
+    sns.despine(ax=ax)
 
     _save(
         fig,
@@ -440,9 +298,7 @@ def plot_product_timeliness(
         ascending=True,
     )
 
-    portfolio_rate = _weighted_portfolio_rate(
-        product
-    )
+    portfolio_rate = _weighted_portfolio_rate(product)
 
     fig, ax = plt.subplots(
         figsize=(
@@ -451,18 +307,10 @@ def plot_product_timeliness(
         )
     )
 
-    y_positions = list(
-        range(
-            len(
-                top
-            )
-        )
-    )
+    y_positions = list(range(len(top)))
 
     ax.scatter(
-        top[
-            "timely_response_rate"
-        ],
+        top["timely_response_rate"],
         y_positions,
         s=90,
         zorder=3,
@@ -470,41 +318,24 @@ def plot_product_timeliness(
 
     for y_position, rate in zip(
         y_positions,
-        top[
-            "timely_response_rate"
-        ],
+        top["timely_response_rate"],
         strict=True,
     ):
-        rate_value = float(
-            rate
-        )
+        rate_value = float(rate)
 
         if rate_value >= 0.98:
-            text_x = (
-                rate_value
-                - 0.003
-            )
+            text_x = rate_value - 0.003
 
-            horizontal_alignment = (
-                "right"
-            )
+            horizontal_alignment = "right"
 
         else:
-            text_x = (
-                rate_value
-                + 0.003
-            )
+            text_x = rate_value + 0.003
 
-            horizontal_alignment = (
-                "left"
-            )
+            horizontal_alignment = "left"
 
-        label = (
-            f"{rate_value:.1%}"
-            .replace(
-                ".",
-                ",",
-            )
+        label = f"{rate_value:.1%}".replace(
+            ".",
+            ",",
         )
 
         ax.text(
@@ -516,37 +347,24 @@ def plot_product_timeliness(
             fontsize=10,
         )
 
-    if not pd.isna(
-        portfolio_rate
-    ):
-        portfolio_label = (
-            f"{portfolio_rate:.1%}"
-            .replace(
-                ".",
-                ",",
-            )
+    if not pd.isna(portfolio_rate):
+        portfolio_label = f"{portfolio_rate:.1%}".replace(
+            ".",
+            ",",
         )
 
         ax.axvline(
             portfolio_rate,
             linestyle="--",
             linewidth=1.6,
-            label=(
-                "Portfolio-Durchschnitt: "
-                f"{portfolio_label}"
-            ),
+            label=(f"Portfolio-Durchschnitt: {portfolio_label}"),
         )
 
-    minimum_rate = float(
-        top[
-            "timely_response_rate"
-        ].min()
-    )
+    minimum_rate = float(top["timely_response_rate"].min())
 
     lower_limit = max(
         0.0,
-        minimum_rate
-        - 0.05,
+        minimum_rate - 0.05,
     )
 
     ax.set_xlim(
@@ -556,9 +374,7 @@ def plot_product_timeliness(
 
     ax.set_yticks(
         y_positions,
-        labels=top[
-            "product"
-        ].tolist(),
+        labels=top["product"].tolist(),
     )
 
     ax.invert_yaxis()
@@ -584,13 +400,9 @@ def plot_product_timeliness(
         ylabel="",
     )
 
-    ax.legend(
-        loc="lower right"
-    )
+    ax.legend(loc="lower right")
 
-    sns.despine(
-        ax=ax
-    )
+    sns.despine(ax=ax)
 
     _save(
         fig,
@@ -604,82 +416,42 @@ def plot_issue_hotspots(
     top_n: int = 15,
 ) -> None:
     """Plot the largest harmonized product-issue combinations."""
-    top = (
-        hotspots.head(
-            top_n
-        )
-        .copy()
-    )
+    top = hotspots.head(top_n).copy()
 
     product_labels = (
-        top[
-            "product"
-        ]
-        .astype(
-            "string"
-        )
-        .fillna(
-            "Produkt nicht angegeben"
-        )
-        .map(
-            _display_product_name
-        )
+        top["product"].astype("string").fillna("Produkt nicht angegeben").map(_display_product_name)
     )
 
     issue_labels = (
-        top[
-            "issue"
-        ]
-        .astype(
-            "string"
-        )
-        .fillna(
-            "Issue nicht angegeben"
-        )
+        top["issue"]
+        .astype("string")
+        .fillna("Issue nicht angegeben")
         .map(
             lambda value: fill(
-                str(
-                    value
-                ),
+                str(value),
                 width=48,
             )
         )
     )
 
-    top[
-        "label"
-    ] = (
-        product_labels
-        .astype(
-            "string"
-        )
+    top["label"] = (
+        product_labels.astype("string")
         .str.cat(
             issue_labels,
             sep=" — ",
         )
-        .astype(
-            object
-        )
+        .astype(object)
     )
 
-    top[
-        "complaints"
-    ] = pd.to_numeric(
-        top[
-            "complaints"
-        ],
+    top["complaints"] = pd.to_numeric(
+        top["complaints"],
         errors="coerce",
     )
 
-    top = (
-        top.sort_values(
-            "complaints",
-            ascending=False,
-        )
-        .reset_index(
-            drop=True
-        )
-    )
+    top = top.sort_values(
+        "complaints",
+        ascending=False,
+    ).reset_index(drop=True)
 
     fig, ax = plt.subplots(
         figsize=(
@@ -688,9 +460,7 @@ def plot_issue_hotspots(
         )
     )
 
-    order = top[
-        "label"
-    ].tolist()
+    order = top["label"].tolist()
 
     sns.barplot(
         data=top,
@@ -700,46 +470,27 @@ def plot_issue_hotspots(
         ax=ax,
     )
 
-    maximum = float(
-        top[
-            "complaints"
-        ].max()
-    )
+    maximum = float(top["complaints"].max())
 
     for patch, value in zip(
         ax.patches,
-        top[
-            "complaints"
-        ],
+        top["complaints"],
         strict=True,
     ):
         ax.text(
-            float(
-                value
-            )
-            + maximum
-            * 0.01,
-            patch.get_y()
-            + patch.get_height()
-            / 2,
-            _format_integer_de(
-                value
-            ),
+            float(value) + maximum * 0.01,
+            patch.get_y() + patch.get_height() / 2,
+            _format_integer_de(value),
             va="center",
             fontsize=9,
         )
 
     ax.set_xlim(
         0,
-        maximum
-        * 1.14,
+        maximum * 1.14,
     )
 
-    ax.xaxis.set_major_formatter(
-        FuncFormatter(
-            _format_compact_number_de
-        )
-    )
+    ax.xaxis.set_major_formatter(FuncFormatter(_format_compact_number_de))
 
     ax.tick_params(
         axis="y",
@@ -747,17 +498,12 @@ def plot_issue_hotspots(
     )
 
     ax.set(
-        title=(
-            f"Top {len(top)} Produkt-Issue-Hotspots "
-            "nach Beschwerdevolumen"
-        ),
+        title=(f"Top {len(top)} Produkt-Issue-Hotspots nach Beschwerdevolumen"),
         xlabel="Anzahl Beschwerden",
         ylabel="",
     )
 
-    sns.despine(
-        ax=ax
-    )
+    sns.despine(ax=ax)
 
     _save(
         fig,
@@ -770,65 +516,32 @@ def plot_product_year_heatmap(
     path: Path,
 ) -> None:
     """Plot yearly complaint volume with a logarithmic color scale."""
-    numeric_matrix = (
-        matrix.apply(
-            pd.to_numeric,
-            errors="coerce",
-        )
-        .astype(
-            "float64"
-        )
-    )
+    numeric_matrix = matrix.apply(
+        pd.to_numeric,
+        errors="coerce",
+    ).astype("float64")
 
     display_matrix = numeric_matrix.copy()
 
-    display_matrix.index = [
-        _display_product_name(
-            value
-        )
-        for value in display_matrix.index
-    ]
+    display_matrix.index = [_display_product_name(value) for value in display_matrix.index]
 
-    annotations = (
-        display_matrix.apply(
-            lambda column: column.map(
-                _format_integer_de
-            )
-        )
-    )
+    annotations = display_matrix.apply(lambda column: column.map(_format_integer_de))
 
-    positive_values = (
-        display_matrix.where(
-            display_matrix
-            > 0
-        )
-        .stack()
-        .astype(
-            "float64"
-        )
-    )
+    positive_values = display_matrix.where(display_matrix > 0).stack().astype("float64")
 
     norm = None
 
-    plot_matrix = (
-        display_matrix.copy()
-    )
+    plot_matrix = display_matrix.copy()
 
     if not positive_values.empty:
-        minimum = float(
-            positive_values.min()
-        )
+        minimum = float(positive_values.min())
 
-        maximum = float(
-            positive_values.max()
-        )
+        maximum = float(positive_values.max())
 
-        plot_matrix = (
-            display_matrix.clip(
-                lower=max(
-                    minimum,
-                    1.0,
-                )
+        plot_matrix = display_matrix.clip(
+            lower=max(
+                minimum,
+                1.0,
             )
         )
 
@@ -854,27 +567,13 @@ def plot_product_year_heatmap(
         annot=annotations,
         fmt="",
         ax=ax,
-        cbar_kws={
-            "label": (
-                "Anzahl Beschwerden "
-                "(logarithmische Farbskala)"
-            )
-        },
+        cbar_kws={"label": ("Anzahl Beschwerden (logarithmische Farbskala)")},
     )
 
-    colorbar = (
-        heatmap.collections[
-            0
-        ]
-        .colorbar
-    )
+    colorbar = heatmap.collections[0].colorbar
 
     if colorbar is not None:
-        colorbar.ax.yaxis.set_major_formatter(
-            FuncFormatter(
-                _format_compact_number_de
-            )
-        )
+        colorbar.ax.yaxis.set_major_formatter(FuncFormatter(_format_compact_number_de))
 
         colorbar.update_ticks()
 
@@ -912,59 +611,40 @@ def plot_segment_sensitivity(
     )
 
     ax.plot(
-        yearly[
-            "year"
-        ],
-        yearly[
-            "total_complaints"
-        ],
+        yearly["year"],
+        yearly["total_complaints"],
         marker="o",
         linewidth=2.5,
         label="Gesamtportfolio",
     )
 
     ax.plot(
-        yearly[
-            "year"
-        ],
-        yearly[
-            "focus_product_complaints"
-        ],
+        yearly["year"],
+        yearly["focus_product_complaints"],
         marker="o",
         linewidth=2.5,
         label=focus_label,
     )
 
     ax.plot(
-        yearly[
-            "year"
-        ],
-        yearly[
-            "without_focus_product"
-        ],
+        yearly["year"],
+        yearly["without_focus_product"],
         marker="o",
         linewidth=2.5,
         label=f"Portfolio ohne {focus_label}",
     )
 
     for _, row in yearly.iterrows():
-        share = (
-            f"{row['focus_product_share']:.1%}"
-            .replace(
-                ".",
-                ",",
-            )
+        share = f"{row['focus_product_share']:.1%}".replace(
+            ".",
+            ",",
         )
 
         ax.annotate(
             share,
             (
-                row[
-                    "year"
-                ],
-                row[
-                    "focus_product_complaints"
-                ],
+                row["year"],
+                row["focus_product_complaints"],
             ),
             xytext=(
                 0,
@@ -982,31 +662,18 @@ def plot_segment_sensitivity(
         )
 
     ax.set(
-        title=(
-            "Sensitivitätsanalyse: Einfluss von Credit Reporting "
-            "auf das Beschwerdewachstum"
-        ),
+        title=("Sensitivitätsanalyse: Einfluss von Credit Reporting auf das Beschwerdewachstum"),
         xlabel="Jahr",
         ylabel="Anzahl Beschwerden",
     )
 
-    ax.set_xticks(
-        yearly[
-            "year"
-        ]
-    )
+    ax.set_xticks(yearly["year"])
 
-    ax.yaxis.set_major_formatter(
-        FuncFormatter(
-            _format_compact_number_de
-        )
-    )
+    ax.yaxis.set_major_formatter(FuncFormatter(_format_compact_number_de))
 
     ax.legend()
 
-    sns.despine(
-        ax=ax
-    )
+    sns.despine(ax=ax)
 
     _save(
         fig,
@@ -1029,10 +696,7 @@ def write_interactive_dashboard(
             "complaints",
             "rolling_complaints",
         ],
-        title=(
-            "Monatliches Beschwerdevolumen "
-            "und rollierender 12-Monats-Durchschnitt"
-        ),
+        title=("Monatliches Beschwerdevolumen und rollierender 12-Monats-Durchschnitt"),
         labels={
             "value": "Anzahl Beschwerden",
             "year_month": "Monat",
@@ -1044,9 +708,7 @@ def write_interactive_dashboard(
         lambda trace: trace.update(
             name={
                 "complaints": "Monatliche Beschwerden",
-                "rolling_complaints": (
-                    "Rollierender 12-Monats-Durchschnitt"
-                ),
+                "rolling_complaints": ("Rollierender 12-Monats-Durchschnitt"),
             }.get(
                 trace.name,
                 trace.name,
@@ -1071,10 +733,7 @@ def write_interactive_dashboard(
             "timely_response_rate": ":.1%",
             "narrative_share": ":.1%",
         },
-        title=(
-            "Top 10 Finanzprodukte nach "
-            "Beschwerdevolumen"
-        ),
+        title=("Top 10 Finanzprodukte nach Beschwerdevolumen"),
         labels={
             "complaints": "Anzahl Beschwerden",
             "product": "Finanzprodukt",
@@ -1098,17 +757,8 @@ def write_interactive_dashboard(
             "</head>"
             "<body>"
         ),
-        (
-            "<h1>"
-            "Consumer Finance Complaint Intelligence"
-            "</h1>"
-        ),
-        (
-            "<p>"
-            "Interaktives exploratives Dashboard für den "
-            "konfigurierten CFPB-Analysezeitraum."
-            "</p>"
-        ),
+        ("<h1>Consumer Finance Complaint Intelligence</h1>"),
+        ("<p>Interaktives exploratives Dashboard für den konfigurierten CFPB-Analysezeitraum.</p>"),
         (
             "<p>"
             "Die dargestellten Beschwerdewerte sind nicht um "
@@ -1126,10 +776,7 @@ def write_interactive_dashboard(
         ),
     ]
 
-    if (
-        sensitivity_yearly is not None
-        and not sensitivity_yearly.empty
-    ):
+    if sensitivity_yearly is not None and not sensitivity_yearly.empty:
         sensitivity_long = (
             sensitivity_yearly[
                 [
@@ -1143,9 +790,7 @@ def write_interactive_dashboard(
                 columns={
                     "total_complaints": "Gesamtportfolio",
                     "focus_product_complaints": focus_label,
-                    "without_focus_product": (
-                        f"Portfolio ohne {focus_label}"
-                    ),
+                    "without_focus_product": (f"Portfolio ohne {focus_label}"),
                 }
             )
             .melt(
@@ -1161,10 +806,7 @@ def write_interactive_dashboard(
             y="Beschwerden",
             color="Segment",
             markers=True,
-            title=(
-                "Sensitivitätsanalyse des "
-                "Beschwerdewachstums"
-            ),
+            title=("Sensitivitätsanalyse des Beschwerdewachstums"),
             labels={
                 "year": "Jahr",
                 "Beschwerden": "Anzahl Beschwerden",
@@ -1173,11 +815,7 @@ def write_interactive_dashboard(
 
         dashboard_parts.extend(
             [
-                (
-                    "<h2>"
-                    "Sensitivitätsanalyse"
-                    "</h2>"
-                ),
+                ("<h2>Sensitivitätsanalyse</h2>"),
                 (
                     "<p>"
                     "Die Segmentkontrolle zeigt, wie stark das "
@@ -1192,9 +830,7 @@ def write_interactive_dashboard(
             ]
         )
 
-    dashboard_parts.append(
-        "</body></html>"
-    )
+    dashboard_parts.append("</body></html>")
 
     output_path.parent.mkdir(
         parents=True,
@@ -1202,8 +838,6 @@ def write_interactive_dashboard(
     )
 
     output_path.write_text(
-        "\n".join(
-            dashboard_parts
-        ),
+        "\n".join(dashboard_parts),
         encoding="utf-8",
     )

@@ -1004,7 +1004,7 @@ Die Implementierung wird mit pytest getestet.
 Aktueller Umfang:
 
 ```text
-24 Tests
+35 Tests
 ```
 
 Normales Quality Gate:
@@ -1025,13 +1025,24 @@ Ruff prüft Codequalität:
 
 ```bash
 ruff check .
+ruff format --check .
+```
+
+Die Offline-Reproduzierbarkeitsprüfung validiert zusätzlich die versionierten
+Provenienz-, KPI-, Zeitreihen-, Trend-, Korrelations-, Sensitivitäts- und
+Taxonomie-Artefakte gegeneinander und führt die acht output-clean Code-Zellen
+des Executive-Notebooks aus. Rohdaten oder das lokale Parquet sind dafür nicht
+erforderlich:
+
+```bash
+make reproduce
 ```
 
 Aktueller Stand:
 
 ```text
-24 passed
-24 passed mit -W error
+35 passed
+35 passed mit -W error
 Ruff: All checks passed
 ```
 
@@ -1048,6 +1059,10 @@ Dazu gehören:
 - vollständiges Rolling Window,
 - Top-N-Auswahl ohne unbenutzte Categorical Levels,
 - Timely-Response-Visualisierung mit kategorischen Produktdimensionen.
+- Abweichungen zwischen Reporttabellen und veröffentlichten Metriken,
+- fehlende Fresh-Clone-Pfade und CWD-Abhängigkeiten,
+- Paket-/Distribution-Versionsdrift,
+- versehentlich versionierte Rohdaten oder Repository-Artefakte.
 
 Dadurch werden konkrete Fehler nicht nur einmal behoben, sondern gegen zukünftige Regression abgesichert.
 
